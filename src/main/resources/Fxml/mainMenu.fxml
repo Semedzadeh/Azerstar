@@ -9,17 +9,13 @@
 
 <AnchorPane prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Fxml.MainMenu">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Çıxış" />
-      <Button layoutX="107.0" layoutY="131.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Mal qəbulu">
-         <font>
-            <Font size="96.0" />
-         </font></Button>
-      <Text layoutX="151.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu - Əməliyyatı seçin " textAlignment="CENTER" wrappingWidth="364.8000183105469">
+      <Button layoutX="29.0" layoutY="27.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="78.0" text="Çıxış" />
+      <Text layoutX="154.0" layoutY="90.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu - Əməliyyatı seçin " textAlignment="CENTER" wrappingWidth="364.8000183105469">
          <font>
             <Font size="30.0" />
          </font>
       </Text>
-      <Text layoutX="489.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="105.60003662109375">
+      <Text layoutX="495.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="105.60003662109375">
          <font>
             <Font size="20.0" />
          </font>
@@ -34,6 +30,6 @@
       <Button layoutX="359.0" layoutY="131.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Analiz  (Labarotoriya)" />
       <Button layoutX="359.0" layoutY="235.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Ləpə Anbarı" />
       <Button layoutX="359.0" layoutY="327.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Ayarlar" />
+      <Button layoutX="109.0" layoutY="131.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Mal qəbulu" />
    </children>
 </AnchorPane>
-
