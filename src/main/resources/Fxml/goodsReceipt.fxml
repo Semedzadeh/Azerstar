@@ -25,7 +25,13 @@
             <Image url="@../../../../../../AzerStar/profile%20avatar.jpg" />
          </image>
       </ImageView>
-      <Button layoutX="387.0" layoutY="207.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="217.0" text="Pərakəndə mal qəbulu" />
-      <Button layoutX="89.0" layoutY="207.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="217.0" text="Topdan mal qəbulu" />
+      <Button layoutX="387.0" layoutY="207.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="217.0" text="Pərakəndə mal qəbulu">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button layoutX="89.0" layoutY="207.0" mnemonicParsing="false" prefHeight="113.0" prefWidth="217.0" text="Topdan mal qəbulu">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>
