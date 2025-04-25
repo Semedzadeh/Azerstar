@@ -20,7 +20,7 @@
             </Text>
             <ImageView fitHeight="40.0" fitWidth="51.0" layoutX="622.0" layoutY="9.0">
                <image>
-                  <Image url="@../../../../../../AzerStar/profile%20avatar.jpg" />
+                  <Image url="@/Images/profileavatar.jpg" />
                </image>
             </ImageView>
          </children>

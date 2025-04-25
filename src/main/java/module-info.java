@@ -1,6 +1,7 @@
 module com.azerstar {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.graphics;
     requires de.jensd.fx.glyphs.fontawesome;
 
     requires org.controlsfx.controls;
@@ -8,6 +9,7 @@ module com.azerstar {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
 
+    opens com.azerstar.Controller to javafx.fxml;
     opens com.azerstar to javafx.fxml;
     exports com.azerstar;
     exports com.azerstar.Controller;
@@ -15,3 +17,4 @@ module com.azerstar {
     exports com.azerstar.Service;
 
 }
+
