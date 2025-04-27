@@ -2,19 +2,47 @@ package com.azerstar.Controller;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 
+import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class LoginController {
+public class LoginController{
 
     @FXML
     private Button backButton;
+    @FXML
+    private Label loginMessageLabel;
+    @FXML
+    private TextField usernameTextField;
+    @FXML
+    private PasswordField passwordTextField;
+
+
+
+
+    public void loginButtonOnAction (ActionEvent event){
+
+        if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank()== false){
+            validateLogin();
+        }
+        else{
+            loginMessageLabel.setText("İstifadəçi adı və şifrə daxil edin");
+        }
+
+
+    }
 
     public void backButtonOnAction(ActionEvent event) {
         try {
@@ -33,7 +61,12 @@ public class LoginController {
         }
     }
 
+    public void validateLogin(){
 
+        loginMessageLabel.setText("Xos geldiniz");
+
+
+    }
 
 
 }

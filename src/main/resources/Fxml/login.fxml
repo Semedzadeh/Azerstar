@@ -25,7 +25,7 @@
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="loginButton" layoutX="292.0" layoutY="267.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="186.0" text="Daxil ol">
+            <Button fx:id="loginButton" layoutX="292.0" layoutY="267.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="44.0" prefWidth="186.0" text="Daxil ol">
                <font>
                   <Font size="20.0" />
                </font>
@@ -40,17 +40,17 @@
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label layoutX="178.0" layoutY="230.0" text="Daxil etdiyiniz istifadəçi adı və ya şifrəsi səhvdir" textFill="#d72020">
+            <Label fx:id="loginMessageLabel" layoutX="178.0" layoutY="230.0" textFill="#d72020">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="enterUsernameField" layoutX="247.0" layoutY="125.0" prefHeight="40.0" prefWidth="295.0" promptText="İstifadəçi adı">
+            <TextField fx:id="usernameTextField" layoutX="247.0" layoutY="125.0" prefHeight="40.0" prefWidth="295.0" promptText="İstifadəçi adı">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="enterPasswordField" layoutX="247.0" layoutY="177.0" prefHeight="40.0" prefWidth="295.0" promptText="Şifrə">
+            <PasswordField fx:id="passwordTextField" layoutX="247.0" layoutY="177.0" prefHeight="40.0" prefWidth="295.0" promptText="Şifrə">
                <font>
                   <Font size="18.0" />
                </font>
