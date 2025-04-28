@@ -1,5 +1,6 @@
 package com.azerstar.Controller;
 
+import com.azerstar.config.DatabaseConnection;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,6 +16,7 @@ import javafx.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Collection;
 import java.util.ResourceBundle;
 
 
@@ -63,7 +65,10 @@ public class LoginController{
 
     public void validateLogin(){
 
-        loginMessageLabel.setText("Xos geldiniz");
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Collection connectDB = connectNow.getConnection();
+
+
 
 
     }
