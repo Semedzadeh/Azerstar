@@ -9,6 +9,7 @@ module com.azerstar {
     requires org.kordamp.bootstrapfx.core;
     requires com.almasb.fxgl.all;
     requires java.sql;
+    requires jdk.compiler;
 
     opens com.azerstar.Controller to javafx.fxml;
     opens com.azerstar to javafx.fxml;
