@@ -3,27 +3,21 @@ package com.azerstar.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
 
-public class GoodsReceiptController  {
+public class DryingController {
 
 
 
     @FXML
-    private Button retailGoodsReceptionButton;
+    private Button tankDryingButton;
     @FXML
-    private Button wholesaleGoodsReceptionButton;
+    private Button sunDryingButton;
     @FXML
     private Button backButton;
 
@@ -31,16 +25,16 @@ public class GoodsReceiptController  {
 
 
 
-    public void retailGoodsReceptionButtonOnAction (ActionEvent event) {
+    public void tankDryingButtonOnAction (ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent retailGoodsReceptionScene = FXMLLoader.load(getClass().getResource("/Fxml/retailGoodsReception.fxml"));
+            Parent tankDryingScene = FXMLLoader.load(getClass().getResource("/Fxml/tankDrying.fxml"));
 
             // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) retailGoodsReceptionButton.getScene().getWindow();
+            Stage stage = (Stage) tankDryingButton.getScene().getWindow();
 
             // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(retailGoodsReceptionScene));
+            stage.setScene(new Scene(tankDryingScene));
             stage.show();
 
         } catch (IOException e) {
@@ -49,16 +43,16 @@ public class GoodsReceiptController  {
 
         }
     }
-    public void wholesaleGoodsReceptionButtonOnAction (ActionEvent event) {
+    public void sunDryingButtonOnAction (ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent wholesaleGoodsReceptionScene = FXMLLoader.load(getClass().getResource("/Fxml/wholesaleGoodsReception.fxml"));
+            Parent sunDryingButtonScene = FXMLLoader.load(getClass().getResource("/Fxml/sunDrying.fxml"));
 
             // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) wholesaleGoodsReceptionButton.getScene().getWindow();
+            Stage stage = (Stage) sunDryingButton.getScene().getWindow();
 
             // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(wholesaleGoodsReceptionScene));
+            stage.setScene(new Scene(sunDryingButtonScene));
             stage.show();
 
         } catch (IOException e) {
@@ -71,17 +65,19 @@ public class GoodsReceiptController  {
     public void backButtonOnAction(ActionEvent event) {
         try {
             // Geri qayıdacağım FXML faylı
-            Parent branchSelectionScene = FXMLLoader.load(getClass().getResource("/Fxml/mainMenu.fxml"));
+            Parent mainMenuScene = FXMLLoader.load(getClass().getResource("/Fxml/mainMenu.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) backButton.getScene().getWindow();
 
             // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(branchSelectionScene));
+            stage.setScene(new Scene(mainMenuScene));
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

@@ -12,8 +12,7 @@
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="logoutButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="122.0" text="Çıxış" />
-            <Text layoutX="483.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="105.60003662109375">
+            <Text layoutX="452.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="105.60003662109375">
                <font>
                   <Font size="20.0" />
                </font>
@@ -39,27 +38,27 @@
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="analysisButton" layoutX="400.0" layoutY="97.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="193.0" text="Analiz  (Labarotoriya)">
+            <Button fx:id="analysisButton" layoutX="400.0" layoutY="97.0" mnemonicParsing="false" onAction="#analysisButtonOnAction" prefHeight="59.0" prefWidth="193.0" text="Analiz  (Labarotoriya)">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="dryingButton" layoutX="134.0" layoutY="188.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Qurutma">
+            <Button fx:id="dryingButton" layoutX="134.0" layoutY="188.0" mnemonicParsing="false" onAction="#dryingButtonOnAction" prefHeight="59.0" prefWidth="183.0" text="Qurutma">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="kernelWarehouseButton" layoutX="400.0" layoutY="188.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="193.0" text="Ləpə Anbarı">
+            <Button fx:id="kernelWarehouseButton" layoutX="400.0" layoutY="188.0" mnemonicParsing="false" onAction="#kernelWarehouseButtonOnAction" prefHeight="59.0" prefWidth="193.0" text="Ləpə Anbarı">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="reportButton" layoutX="134.0" layoutY="277.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="183.0" text="Hesabat">
+            <Button fx:id="reportButton" layoutX="134.0" layoutY="277.0" mnemonicParsing="false" onAction="#reportButtonOnAction" prefHeight="59.0" prefWidth="183.0" text="Hesabat">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="settingsButton" layoutX="400.0" layoutY="277.0" mnemonicParsing="false" prefHeight="59.0" prefWidth="193.0" text="Ayarlar">
+            <Button fx:id="settingsButton" layoutX="400.0" layoutY="277.0" mnemonicParsing="false" onAction="#settingsButtonOnAction" prefHeight="59.0" prefWidth="193.0" text="Ayarlar">
                <font>
                   <Font size="18.0" />
                </font>

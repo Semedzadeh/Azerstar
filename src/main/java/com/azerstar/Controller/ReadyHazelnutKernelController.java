@@ -10,7 +10,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class RetailGoodsReceptionController {
+public class ReadyHazelnutKernelController {
 
     @FXML
     private Button backButton;
@@ -18,17 +18,18 @@ public class RetailGoodsReceptionController {
     public void backButtonOnAction(ActionEvent event) {
         try {
             // Geri qayıdacağım FXML faylı
-            Parent branchSelectionScene = FXMLLoader.load(getClass().getResource("/Fxml/goodsReceipt.fxml"));
+            Parent kernelWarehouseScene = FXMLLoader.load(getClass().getResource("/Fxml/kernelWarehouse.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) backButton.getScene().getWindow();
 
             // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(branchSelectionScene));
+            stage.setScene(new Scene(kernelWarehouseScene));
             stage.show();
 
         } catch (IOException e) {
             e.printStackTrace();
+            e.getCause();
         }
     }
 

@@ -8,7 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.RetailGoodsReceptionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.TransferredKernelReportController">
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
@@ -29,7 +29,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="156.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pərakəndə mal qəbulu" textAlignment="CENTER" wrappingWidth="388.591796875">
+            <Text layoutX="140.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Transfer edilmiş ləpə hesabatı" textAlignment="CENTER" wrappingWidth="471.7918701171875">
                <font>
                   <Font size="36.0" />
                </font>
