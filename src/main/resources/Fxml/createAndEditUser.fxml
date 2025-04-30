@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.CreateAndEditUserController">
+   <top>
+      <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
+            <Text layoutX="483.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="105.60003662109375">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="622.0" layoutY="9.0">
+               <image>
+                  <Image url="@../Images/profileavatar.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text layoutX="-4.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="İstifadəçi əlavə və düzəliş edilməsi" textAlignment="CENTER" wrappingWidth="715.591796875">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <TableView fx:id="usersTable" layoutX="14.0" layoutY="55.0" prefHeight="282.0" prefWidth="682.0">
+              <columns>
+                <TableColumn fx:id="idColumn" minWidth="150.0" prefWidth="150.0" text="Ad" />
+                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="163.0" text="Soyad" />
+                  <TableColumn fx:id="surnameColumn" prefWidth="144.0" text="Istifadçi adı" />
+                  <TableColumn fx:id="branchColumn" prefWidth="103.0" text="Filial" />
+                  <TableColumn fx:id="editColumn" prefWidth="64.0" text="Düzəliş et" />
+                  <TableColumn prefWidth="59.0" text="Sil" />
+              </columns>
+            </TableView>
+            <Text layoutX="385.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="İstifadəçi əlavə et" textAlignment="CENTER" wrappingWidth="208.591796875">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="createUserButton" layoutX="594.0" layoutY="345.0" mnemonicParsing="false" onAction="#createUserButtonOnAction" prefHeight="38.0" prefWidth="82.0" text="+" textAlignment="CENTER" textFill="#262690">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

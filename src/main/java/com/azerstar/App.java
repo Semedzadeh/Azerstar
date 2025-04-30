@@ -14,7 +14,6 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/Fxml/entrance.fxml"));
-        //primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.setTitle("AzerStar");
         primaryStage.setScene(new Scene(root,700,450));
         primaryStage.show();

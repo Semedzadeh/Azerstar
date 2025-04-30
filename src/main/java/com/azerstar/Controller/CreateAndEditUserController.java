@@ -10,10 +10,12 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class CreateUserController {
+public class CreateAndEditUserController {
 
     @FXML
     private Button backButton;
+    @FXML
+    private Button createUserButton;
 
     public void backButtonOnAction(ActionEvent event) {
         try {
@@ -30,6 +32,22 @@ public class CreateUserController {
         } catch (IOException e) {
             e.printStackTrace();
             e.getCause();
+        }
+    }
+    public void createUserButtonOnAction(ActionEvent event) {
+        try {
+            // Logine getmek ucun FXML faylı
+            Parent createUserScene = FXMLLoader.load(getClass().getResource("/Fxml/createUser.fxml"));
+
+            // Hal-hazırkı stage-i tap
+            Stage stage = (Stage) createUserButton.getScene().getWindow();
+
+            // Yeni scene təyin et və göstər
+            stage.setScene(new Scene(createUserScene));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
