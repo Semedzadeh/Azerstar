@@ -10,6 +10,7 @@ module com.azerstar {
     requires com.almasb.fxgl.all;
     requires java.sql;
     requires jdk.compiler;
+    requires java.desktop;
 
     opens com.azerstar.Controller to javafx.fxml;
     opens com.azerstar to javafx.fxml;

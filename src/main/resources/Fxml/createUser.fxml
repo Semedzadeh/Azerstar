@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.CreateAndEditUserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.CreateUserController">
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
@@ -31,12 +31,17 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
+            <Label fx:id="s" layoutX="194.0" layoutY="356.0" text="Daxil etdiyiniz şifrələr eyni deyil" textFill="#b40909">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
             <Text layoutX="-7.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Məlumatları doldurun " textAlignment="CENTER" wrappingWidth="715.591796875">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="confirmButton" layoutX="494.0" layoutY="110.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="92.0" prefWidth="173.0" text="Təsdiq et">
+            <Button fx:id="confirmButton" layoutX="494.0" layoutY="110.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="173.0" text="Təsdiq et">
                <font>
                   <Font size="28.0" />
                </font></Button>
@@ -70,27 +75,27 @@
                   <Font size="26.0" />
                </font>
             </Label>
-            <TextField layoutX="198.0" layoutY="136.0" prefHeight="40.0" prefWidth="240.0" promptText="Soyad">
+            <TextField fx:id="lastnameTextField" layoutX="198.0" layoutY="136.0" prefHeight="40.0" prefWidth="240.0" promptText="Soyad">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="197.0" layoutY="77.0" prefHeight="40.0" prefWidth="240.0" promptText="Ad">
+            <TextField fx:id="nameTextField" layoutX="197.0" layoutY="77.0" prefHeight="40.0" prefWidth="240.0" promptText="Ad">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField layoutX="197.0" layoutY="195.0" prefHeight="40.0" prefWidth="240.0" promptText="İstifadəçi adı">
+            <TextField fx:id="usernametextField" layoutX="197.0" layoutY="195.0" prefHeight="40.0" prefWidth="240.0" promptText="İstifadəçi adı">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField layoutX="196.0" layoutY="250.0" prefHeight="43.0" prefWidth="242.0" promptText="Şifrə">
+            <PasswordField fx:id="passwordField" layoutX="196.0" layoutY="250.0" prefHeight="43.0" prefWidth="242.0" promptText="Şifrə">
                <font>
                   <Font size="18.0" />
                </font>
             </PasswordField>
-            <PasswordField layoutX="197.0" layoutY="306.0" prefHeight="43.0" prefWidth="242.0" promptText="Təkrar Şifrə">
+            <PasswordField fx:id="againPasswordField" layoutX="197.0" layoutY="306.0" prefHeight="43.0" prefWidth="242.0" promptText="Təkrar Şifrə">
                <font>
                   <Font size="18.0" />
                </font>
