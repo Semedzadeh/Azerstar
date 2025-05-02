@@ -38,12 +38,12 @@
             </Text>
             <TableView fx:id="usersTable" layoutX="14.0" layoutY="55.0" prefHeight="282.0" prefWidth="682.0">
               <columns>
-                <TableColumn fx:id="idColumn" minWidth="150.0" prefWidth="150.0" text="Ad" />
-                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="163.0" text="Soyad" />
-                  <TableColumn fx:id="surnameColumn" prefWidth="144.0" text="Istifadçi adı" />
+                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="150.0" text="Ad" />
+                <TableColumn fx:id="surnameColumn" minWidth="150.0" prefWidth="163.0" text="Soyad" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="144.0" text="Istifadçi adı" />
                   <TableColumn fx:id="branchColumn" prefWidth="103.0" text="Filial" />
-                  <TableColumn fx:id="editColumn" prefWidth="64.0" text="Düzəliş et" />
-                  <TableColumn prefWidth="59.0" text="Sil" />
+                  <TableColumn fx:id="userEditColumn" prefWidth="64.0" text="Düzəliş et" />
+                  <TableColumn fx:id="userDeleteColumn" prefWidth="59.0" text="Sil" />
               </columns>
             </TableView>
             <Text layoutX="385.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="İstifadəçi əlavə et" textAlignment="CENTER" wrappingWidth="208.591796875">

@@ -14,6 +14,7 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
@@ -62,35 +63,28 @@ public class LoginController {
             e.printStackTrace();
         }
     }
-
-    public void validateLogin(){
-
+    public void validateLogin() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String verifyLogin = "SELECT count(1) FROM user_account WHERE username = '" + usernameTextField.getText() + "' AND password = '" + passwordTextField.getText() + "'";
+        String verifyLogin = "SELECT * FROM user_account WHERE username = ? AND password = ?";
 
-        try{
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
+            preparedStatement.setString(1, usernameTextField.getText());
+            preparedStatement.setString(2, passwordTextField.getText());
 
-            Statement statement = connectDB.createStatement();
-            ResultSet queryResult = statement.executeQuery(verifyLogin);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while(queryResult.next()){
-
-                if (queryResult.getInt(1) == 1){
-                    //loginMessageLabel.setText("Xos geldiniz");
-                    mainMenuForm();
-
-                }else {
-                    loginMessageLabel.setText("Daxil etdiyiniz istifadeci adi ve ya sifre yanlisdir. Yeniden daxil edin");
-                }
+            if (resultSet.next()) {
+                mainMenuForm(); // Giriş uğurlu
+            } else {
+                loginMessageLabel.setText("Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır.");
             }
-        }catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
-            e.getCause();
         }
-
-
     }
     public void mainMenuForm(){
 

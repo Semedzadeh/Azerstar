@@ -31,21 +31,21 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="s" layoutX="194.0" layoutY="356.0" text="Daxil etdiyiniz şifrələr eyni deyil" textFill="#b40909">
+            <Label fx:id="passwordFailedMessage" layoutX="194.0" layoutY="356.0" textFill="#b40909">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Text layoutX="-7.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Məlumatları doldurun " textAlignment="CENTER" wrappingWidth="715.591796875">
+            <Text layoutX="-7.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Məlumatları doldurun " textAlignment="CENTER" wrappingWidth="715.591796875">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="confirmButton" layoutX="494.0" layoutY="110.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="173.0" text="Təsdiq et">
+            <Button fx:id="confirmButton" layoutX="494.0" layoutY="110.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="92.0" prefWidth="173.0" text="Təsdiq et">
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button fx:id="cancelButton" layoutX="494.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="92.0" prefWidth="173.0" text="Ləvğ et">
+            <Button fx:id="cancelButton" layoutX="494.0" layoutY="226.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="92.0" prefWidth="173.0" text="Bağla">
                <font>
                   <Font size="28.0" />
                </font>
@@ -100,6 +100,11 @@
                   <Font size="18.0" />
                </font>
             </PasswordField>
+            <Label fx:id="createUserSuccessfullyMessage" layoutX="187.0" layoutY="44.0" textFill="#118a0d">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </left>
