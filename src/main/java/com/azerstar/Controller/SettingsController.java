@@ -14,7 +14,7 @@ public class SettingsController {
     @FXML
     private Button backButton;
     @FXML
-    private Button createAndEditUserButton;
+    private Button createEditDeleteUserButton;
     @FXML
     private Button userPermissionsButton;
     @FXML
@@ -36,16 +36,16 @@ public class SettingsController {
             e.printStackTrace();
         }
     }
-    public void createAndEditUserButtonOnAction (ActionEvent event) {
+    public void createEditDeleteUserButtonOnAction (ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent createAndEditUserScene = FXMLLoader.load(getClass().getResource("/Fxml/createAndEditUser.fxml"));
+            Parent createEditDeleteUserScene = FXMLLoader.load(getClass().getResource("/Fxml/createEditDeleteUser.fxml"));
 
             // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) createAndEditUserButton.getScene().getWindow();
+            Stage stage = (Stage) createEditDeleteUserButton.getScene().getWindow();
 
             // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(createAndEditUserScene));
+            stage.setScene(new Scene(createEditDeleteUserScene));
             stage.show();
 
         } catch (IOException e) {

@@ -39,4 +39,19 @@ public class UserDAO {
 
         return usersList;
     }
+    public static boolean deleteUser(int accountId) {
+        DatabaseConnection connectNow = new DatabaseConnection();
+        Connection connectDB = connectNow.getConnection();
+
+        String query = "DELETE FROM user_account WHERE account_id = " + accountId;
+
+        try {
+            Statement statement = connectDB.createStatement();
+            int rowsAffected = statement.executeUpdate(query);
+            return rowsAffected > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
 }

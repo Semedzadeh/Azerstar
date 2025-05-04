@@ -10,7 +10,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.CreateAndEditUserController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.Controller.CreateEditDeleteUserController">
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
@@ -38,20 +38,23 @@
             </Text>
             <TableView fx:id="usersTable" layoutX="14.0" layoutY="55.0" prefHeight="282.0" prefWidth="682.0">
               <columns>
-                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="150.0" text="Ad" />
-                <TableColumn fx:id="surnameColumn" minWidth="150.0" prefWidth="163.0" text="Soyad" />
-                  <TableColumn fx:id="usernameColumn" prefWidth="144.0" text="Istifadçi adı" />
-                  <TableColumn fx:id="branchColumn" prefWidth="103.0" text="Filial" />
-                  <TableColumn fx:id="userEditColumn" prefWidth="64.0" text="Düzəliş et" />
-                  <TableColumn fx:id="userDeleteColumn" prefWidth="59.0" text="Sil" />
+                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="189.60001850128174" text="Ad" />
+                <TableColumn fx:id="surnameColumn" minWidth="150.0" prefWidth="183.20001220703125" text="Soyad" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="195.199951171875" text="Istifadçi adı" />
+                  <TableColumn fx:id="branchColumn" prefWidth="115.20001220703125" text="Filial" />
               </columns>
             </TableView>
-            <Text layoutX="385.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="İstifadəçi əlavə et" textAlignment="CENTER" wrappingWidth="208.591796875">
+            <Button fx:id="createUserButton" layoutX="101.0" layoutY="345.0" mnemonicParsing="false" onAction="#createUserButtonOnAction" prefHeight="40.0" prefWidth="123.0" text="Əlavə et" textAlignment="CENTER" textFill="#0d0d0d">
                <font>
-                  <Font size="24.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
-            </Text>
-            <Button fx:id="createUserButton" layoutX="594.0" layoutY="345.0" mnemonicParsing="false" onAction="#createUserButtonOnAction" prefHeight="38.0" prefWidth="82.0" text="+" textAlignment="CENTER" textFill="#262690">
+            </Button>
+            <Button fx:id="editUserButton" layoutX="299.0" layoutY="345.0" mnemonicParsing="false" onAction="#editUserButtonOnAction" prefHeight="40.0" prefWidth="134.0" text="Düzəliş et" textAlignment="CENTER" textFill="#050505">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteUserButton" layoutX="510.0" layoutY="345.0" mnemonicParsing="false" onAction="#deleteUserButtonOnAction" prefHeight="40.0" prefWidth="134.0" text="Sil" textAlignment="CENTER" textFill="#0d0d0d">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>

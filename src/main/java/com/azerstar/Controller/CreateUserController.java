@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.Statement;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 public class CreateUserController {
 
@@ -25,7 +26,7 @@ public class CreateUserController {
     @FXML
     private Label createUserSuccessfullyMessage;
     @FXML
-    private Label passwordFailedMessage;
+    private Label passwordUsernameFailedMessage;
     @FXML
     private PasswordField passwordField;
     @FXML
@@ -42,13 +43,13 @@ public class CreateUserController {
     public void cancelButtonOnAction(ActionEvent event) {
         try {
             // Geri qayıdacağım FXML faylı
-            Parent createAndEditUserScene = FXMLLoader.load(getClass().getResource("/Fxml/createAndEditUser.fxml"));
+            Parent createEditDeleteUserScene = FXMLLoader.load(getClass().getResource("/Fxml/createEditDeleteUser.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) cancelButton.getScene().getWindow();
 
             // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(createAndEditUserScene));
+            stage.setScene(new Scene(createEditDeleteUserScene));
             stage.show();
 
         } catch (IOException e) {
@@ -57,44 +58,65 @@ public class CreateUserController {
         }
     }
     public void confirmButtonOnAction(ActionEvent event){
+        if (passwordField.getText().equals(againPasswordField.getText())) {
 
-        if (passwordField.getText().equals(againPasswordField.getText())){
-            createUser();
-        }else {
-            passwordFailedMessage.setText("Daxil etdiyiniz şifrələr eyni deyil");
+            DatabaseConnection connectNow = new DatabaseConnection();
+            Connection connectDB = connectNow.getConnection();
+
+            String username = usernametextField.getText().trim(); // boşluqları silir
+
+            try {
+                // Username-in bazada olub olmadığını yoxla
+                String checkUserQuery = "SELECT COUNT(*) FROM user_account WHERE username = ?";
+                PreparedStatement checkStatement = connectDB.prepareStatement(checkUserQuery);
+                checkStatement.setString(1, username);
+
+                ResultSet resultSet = checkStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+
+                if (count > 0) {
+                    passwordUsernameFailedMessage.setText("Bu istifadəçi adı artıq mövcuddur");
+                } else {
+                    createUser(); // username unikal olduğuna görə yarat
+                }
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                passwordUsernameFailedMessage.setText("Xəta baş verdi!");
+            }
+
+        } else {
+            passwordUsernameFailedMessage.setText("Daxil etdiyiniz şifrələr eyni deyil");
         }
+
     }
-    public void createUser(){
+    public void createUser() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String firstname = nameTextField.getText();
-        String lastname = lastnameTextField.getText();
-        String username = usernametextField.getText();
-        String password = passwordField.getText();
+        String firstname = nameTextField.getText().trim();
+        String lastname = lastnameTextField.getText().trim();
+        String username = usernametextField.getText().trim();
+        String password = passwordField.getText().trim();
 
-        String insertFields = "INSERT INTO user_account (firstname,lastname,username,password) VALUES ('";
-        String insertValues = firstname + " ',' "+ lastname + " ',' "+ username + " ',' "+ password + "')";
-        String insertToRegister = insertFields +insertValues;
+        String insertToRegister = "INSERT INTO user_account (firstname, lastname, username, password) VALUES (?, ?, ?, ?)";
 
-        try{
-            Statement statement = connectDB.createStatement();
-            statement.executeUpdate(insertToRegister);
-            createUserSuccessfullyMessage.setText("Yeni Istifadəçi uğurla əlavə edildi");
+        try {
+            PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRegister);
+            preparedStatement.setString(1, firstname);
+            preparedStatement.setString(2, lastname);
+            preparedStatement.setString(3, username);
+            preparedStatement.setString(4, password);
 
+            preparedStatement.executeUpdate();
+            createUserSuccessfullyMessage.setText("Yeni istifadəçi uğurla əlavə edildi");
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             e.getCause();
         }
-
     }
-
-
-
-
-
-
 
 
 }
