@@ -1,6 +1,8 @@
 package com.azerstar.Controller;
 
+import com.azerstar.Util.SceneNavigator;
 import com.azerstar.config.DatabaseConnection;
+import com.azerstar.Util.Session;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,8 +18,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Statement;
-
 
 public class LoginController {
 
@@ -32,83 +32,56 @@ public class LoginController {
     @FXML
     private Button loginButton;
 
+    public void loginButtonOnAction(ActionEvent event) {
+        String username = usernameTextField.getText().trim();
+        String password = passwordTextField.getText().trim();
 
-
-
-    public void loginButtonOnAction (ActionEvent event){
-
-        if(usernameTextField.getText().isBlank() == false && passwordTextField.getText().isBlank()== false){
-            validateLogin();
-        }
-        else{
+        if (username.isEmpty() || password.isEmpty()) {
             loginMessageLabel.setText("İstifadəçi adı və şifrə daxil edin");
+            return;
         }
 
-
-    }
-
-    public void backButtonOnAction(ActionEvent event) {
-        try {
-            // Geri qayıdacağım FXML faylı
-            Parent branchSelectionScene = FXMLLoader.load(getClass().getResource("/Fxml/branchSelection.fxml"));
-
-            // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) backButton.getScene().getWindow();
-
-            // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(branchSelectionScene));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (validateLogin(username, password)) {
+            Session.setCurrentUsername(username); // istifadəçi adı yadda saxlanılır
+            goToMainMenu();
+        } else {
+            loginMessageLabel.setText("Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır.");
         }
     }
-    public void validateLogin() {
+
+    @FXML
+    private void backButtonOnAction(ActionEvent event) {
+        SceneNavigator.goToScene(event, backButton, "/Fxml/branchSelection.fxml");
+    }
+
+    private boolean validateLogin(String username, String password) {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
         String verifyLogin = "SELECT * FROM user_account WHERE username = ? AND password = ?";
 
-        try {
-            PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin);
-            preparedStatement.setString(1, usernameTextField.getText());
-            preparedStatement.setString(2, passwordTextField.getText());
+        try (PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin)) {
+            preparedStatement.setString(1, username);
+            preparedStatement.setString(2, password);
 
             ResultSet resultSet = preparedStatement.executeQuery();
-
-            if (resultSet.next()) {
-                mainMenuForm(); // Giriş uğurlu
-            } else {
-                loginMessageLabel.setText("Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır.");
-            }
+            return resultSet.next();
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
-    public void mainMenuForm(){
 
-        try{
-
-            Parent mainMenuScene = FXMLLoader.load(getClass().getResource("/Fxml/mainMenu.fxml"));
-
-            // Hal-hazırkı stage-i tap
-            Stage mainMenuStage = (Stage) backButton.getScene().getWindow();
-
-            // Yeni scene təyin et və göstər
-            mainMenuStage.setScene(new Scene(mainMenuScene));
-            mainMenuStage.show();
-
-        }catch (Exception e){
+    private void goToMainMenu() {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Fxml/mainMenu.fxml"));
+            Parent mainMenuScene = loader.load();
+            Stage stage = (Stage) loginButton.getScene().getWindow();
+            stage.setScene(new Scene(mainMenuScene));
+            stage.show();
+        } catch (IOException e) {
             e.printStackTrace();
-            e.getCause();
         }
-
-
     }
-
-
-
-
-
 }

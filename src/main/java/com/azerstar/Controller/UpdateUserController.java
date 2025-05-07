@@ -1,21 +1,23 @@
 package com.azerstar.Controller;
 
+import com.azerstar.Util.ProfileMenu;
+import com.azerstar.Util.Session;
 import com.azerstar.config.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Optional;
 
 public class UpdateUserController {
 
@@ -41,6 +43,14 @@ public class UpdateUserController {
 
     private String originalUsername;
 
+    @FXML
+    private ImageView profileAvatarImageView;
+
+    private String currentUsername = Session.getCurrentUsername();
+    @FXML
+    public void profileAvatarImageMouseClicked() {
+        ProfileMenu.attachProfileMenu(profileAvatarImageView, currentUsername);
+    }
     public void setUserData(String firstname, String lastname, String username, String password) {
         nameTextField.setText(firstname);
         lastnameTextField.setText(lastname);
