@@ -12,12 +12,12 @@ module com.azerstar {
     requires jdk.compiler;
     requires java.desktop;
 
-    opens com.azerstar.Controller to javafx.fxml;
+    opens com.azerstar.controller to javafx.fxml;
     opens com.azerstar to javafx.fxml;
     exports com.azerstar;
-    exports com.azerstar.Controller;
-    exports com.azerstar.Model;
-    exports com.azerstar.Service;
+    exports com.azerstar.controller;
+    exports com.azerstar.model;
+    exports com.azerstar.service;
 
 }
 
