@@ -46,6 +46,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Text fx:id="dateText" layoutX="14.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="141.9918212890625">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>

@@ -15,7 +15,7 @@
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
-            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="917.0" layoutY="9.0" onMouseClicked="#profileAvatarImageMouseClicked">
+            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="899.0" layoutY="9.0" onMouseClicked="#profileAvatarImageMouseClicked">
                <image>
                   <Image url="@../images/profileavatar.jpg" />
                </image>
@@ -51,6 +51,11 @@
                   <Font size="18.0" />
                </font>
             </Button>
+            <Text fx:id="dateText" layoutX="14.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="139.591796875">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </center>

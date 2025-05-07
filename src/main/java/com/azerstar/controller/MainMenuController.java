@@ -32,7 +32,7 @@ public class MainMenuController  {
     private ImageView profileAvatarImageView;
 
     private String currentUsername = Session.getCurrentUsername();
-    private String currentName = Session.getCurrentUsername();
+
     @FXML
     public void profileAvatarImageMouseClicked() {
         Stage stage = (Stage) profileAvatarImageView.getScene().getWindow();
