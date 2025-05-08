@@ -28,16 +28,15 @@
          <children>
             <TableView layoutX="3.0" layoutY="54.0" prefHeight="343.0" prefWidth="693.0">
               <columns>
-                <TableColumn prefWidth="59.0" text="S/N" />
-                <TableColumn prefWidth="89.0" text="Tarix/saat" />
-                  <TableColumn prefWidth="128.0" text="Müştəri adı" />
-                  <TableColumn prefWidth="92.0" text="Miqdar (kq)" />
-                  <TableColumn prefWidth="127.0" text="Məbləğ (1 kq/AZN)" />
-                  <TableColumn prefWidth="123.0" text="Cəm məbləğ (AZN)" />
-                  <TableColumn minWidth="0.0" prefWidth="74.0" text="Qeyd" />
+                <TableColumn prefWidth="91.0" text="Tarix/saat" />
+                  <TableColumn prefWidth="133.0" text="Müştəri adı" />
+                  <TableColumn prefWidth="104.0" text="Miqdar (kq)" />
+                  <TableColumn prefWidth="138.0" text="Məbləğ (1 kq/AZN)" />
+                  <TableColumn prefWidth="120.0" text="Cəm məbləğ (AZN)" />
+                  <TableColumn minWidth="0.0" prefWidth="105.0" text="Qeyd" />
               </columns>
             </TableView>
-            <Button layoutX="562.0" layoutY="6.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="124.0" text="Əlavə et">
+            <Button fx:id="createRetailGoodsReceptionButton" layoutX="562.0" layoutY="6.0" mnemonicParsing="false" onAction="#createRetailGoodsReceptionButtonOnAction" prefHeight="37.0" prefWidth="124.0" text="Əlavə et">
                <font>
                   <Font size="18.0" />
                </font>

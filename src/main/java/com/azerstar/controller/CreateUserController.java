@@ -72,7 +72,7 @@ public class CreateUserController {
             DatabaseConnection connectNow = new DatabaseConnection();
             Connection connectDB = connectNow.getConnection();
 
-            String username = usernametextField.getText().trim(); // boşluqları silir
+            String username = usernametextField.getText().trim();
 
             try {
                 // Username-in bazada olub olmadığını yoxla
