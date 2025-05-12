@@ -16,7 +16,7 @@ public class UserDAO {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String query = "SELECT * FROM user_account"; // Əgər cədvəl adın fərqlidirsə, deyin dəyişək
+        String query = "SELECT * FROM user_account";
 
         try {
             Statement statement = connectDB.createStatement();

@@ -26,14 +26,14 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView layoutX="3.0" layoutY="54.0" prefHeight="343.0" prefWidth="693.0">
+            <TableView fx:id="retailGoodsTable" layoutX="3.0" layoutY="54.0" prefHeight="343.0" prefWidth="693.0">
               <columns>
-                <TableColumn prefWidth="91.0" text="Tarix/saat" />
-                  <TableColumn prefWidth="133.0" text="Müştəri adı" />
-                  <TableColumn prefWidth="104.0" text="Miqdar (kq)" />
-                  <TableColumn prefWidth="138.0" text="Məbləğ (1 kq/AZN)" />
-                  <TableColumn prefWidth="120.0" text="Cəm məbləğ (AZN)" />
-                  <TableColumn minWidth="0.0" prefWidth="105.0" text="Qeyd" />
+                <TableColumn fx:id="dateTimeColumn" prefWidth="91.0" text="Tarix/saat" />
+                  <TableColumn fx:id="custumerColumn" prefWidth="133.0" text="Müştəri adı" />
+                  <TableColumn fx:id="weightColumn" prefWidth="104.0" text="Miqdar (kq)" />
+                  <TableColumn fx:id="unitPriceColumn" prefWidth="138.0" text="Məbləğ (1 kq/AZN)" />
+                  <TableColumn fx:id="totalAmountColumn" prefWidth="120.0" text="Cəm məbləğ (AZN)" />
+                  <TableColumn fx:id="noteColumn" minWidth="0.0" prefWidth="105.0" text="Qeyd" />
               </columns>
             </TableView>
             <Button fx:id="createRetailGoodsReceptionButton" layoutX="562.0" layoutY="6.0" mnemonicParsing="false" onAction="#createRetailGoodsReceptionButtonOnAction" prefHeight="37.0" prefWidth="124.0" text="Əlavə et">

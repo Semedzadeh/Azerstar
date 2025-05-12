@@ -36,7 +36,7 @@ public class CreateEditDeleteUserController implements Initializable {
     @FXML
     private TableColumn<User, String> usernameColumn;
     @FXML
-    private TableColumn<User, Integer> branchColumn; // branch_id int-dir!
+    private TableColumn<User, Integer> branchColumn;
     @FXML
     private TableView<User> usersTable;
     @FXML
