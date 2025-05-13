@@ -6,30 +6,30 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.BranchSelectionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.BranchSelectionController">
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
+            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="39.0" prefWidth="136.0" text="Geri qayıtmaq" />
          </children>
       </AnchorPane>
    </top>
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="227.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filialı seçin">
+            <Text layoutX="350.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filialı seçin">
                <font>
-                  <Font size="55.0" />
+                  <Font size="64.0" />
                </font>
             </Text>
-            <Button fx:id="zaqatalaButton" layoutX="106.0" layoutY="148.0" mnemonicParsing="false" onAction="#zaqatalaButtonOnAction" prefHeight="96.0" prefWidth="242.0" text="Zaqatala">
+            <Button fx:id="zaqatalaButton" layoutX="196.0" layoutY="212.0" mnemonicParsing="false" onAction="#zaqatalaButtonOnAction" prefHeight="141.0" prefWidth="293.0" text="Zaqatala">
                <font>
                   <Font size="45.0" />
                </font>
             </Button>
-            <Button fx:id="shekiButton" layoutX="398.0" layoutY="148.0" mnemonicParsing="false" onAction="#shekiButtonOnAction" prefHeight="96.0" prefWidth="242.0" text="Şəki">
+            <Button fx:id="shekiButton" layoutX="586.0" layoutY="209.0" mnemonicParsing="false" onAction="#shekiButtonOnAction" prefHeight="147.0" prefWidth="287.0" text="Şəki">
                <font>
-                  <Font size="45.0" />
+                  <Font size="48.0" />
                </font>
             </Button>
          </children>

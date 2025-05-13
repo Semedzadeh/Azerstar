@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.LoginController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.LoginController">
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
-            <Text layoutX="501.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="204.60003662109375">
+            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="36.0" prefWidth="130.0" text="Geri qayıtmaq" />
+            <Text layoutX="781.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Filial: Şəki" textAlignment="CENTER" wrappingWidth="204.60003662109375">
                <font>
                   <Font size="20.0" />
                </font>
@@ -25,22 +25,22 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="177.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daxil olmaq üçün istifadəçi adı və şifrənizi girin" textAlignment="CENTER" wrappingWidth="416.591796875">
+            <Text layoutX="292.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Daxil olmaq üçün istifadəçi adı və şifrənizi girin" textAlignment="CENTER" wrappingWidth="416.591796875">
                <font>
                   <Font size="30.0" />
                </font>
             </Text>
-            <Button fx:id="loginButton" layoutX="292.0" layoutY="260.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="44.0" prefWidth="186.0" text="Daxil ol">
+            <Button fx:id="loginButton" layoutX="407.0" layoutY="349.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="44.0" prefWidth="186.0" text="Daxil ol">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Label layoutX="68.0" layoutY="122.0" text="İstifadəçi adı">
+            <Label layoutX="199.0" layoutY="188.0" text="İstifadəçi adı">
                <font>
                   <Font size="30.0" />
                </font>
             </Label>
-            <Label layoutX="175.0" layoutY="174.0" text="Şifrə">
+            <Label layoutX="306.0" layoutY="269.0" text="Şifrə">
                <font>
                   <Font size="30.0" />
                </font>
@@ -50,12 +50,12 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <TextField fx:id="usernameTextField" layoutX="247.0" layoutY="125.0" prefHeight="40.0" prefWidth="295.0" promptText="İstifadəçi adı">
+            <TextField fx:id="usernameTextField" layoutX="405.0" layoutY="190.0" prefHeight="40.0" prefWidth="295.0" promptText="İstifadəçi adı">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <PasswordField fx:id="passwordTextField" layoutX="247.0" layoutY="177.0" prefHeight="40.0" prefWidth="295.0" promptText="Şifrə">
+            <PasswordField fx:id="passwordTextField" layoutX="405.0" layoutY="271.0" prefHeight="40.0" prefWidth="295.0" promptText="Şifrə">
                <font>
                   <Font size="18.0" />
                </font>

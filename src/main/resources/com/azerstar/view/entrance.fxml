@@ -6,18 +6,18 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.EntranceController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.EntranceController">
    <center>
-      <AnchorPane prefHeight="450.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="entranceButton" layoutX="225.0" layoutY="225.0" mnemonicParsing="false" onAction="#entranceButtonOnAction" prefHeight="77.0" prefWidth="251.0" text="Giriş">
+            <Button fx:id="entranceButton" layoutX="333.0" layoutY="284.0" mnemonicParsing="false" onAction="#entranceButtonOnAction" prefHeight="115.0" prefWidth="335.0" text="Giriş">
                <font>
-                  <Font size="36.0" />
+                  <Font size="48.0" />
                </font>
             </Button>
-            <Text layoutX="149.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Azərstar MMC">
+            <Text layoutX="274.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Azərstar MMC">
                <font>
-                  <Font size="64.0" />
+                  <Font size="72.0" />
                </font>
             </Text>
          </children>

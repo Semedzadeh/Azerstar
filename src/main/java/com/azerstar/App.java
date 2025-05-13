@@ -14,7 +14,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("/com/azerstar/view/entrance.fxml"));
         primaryStage.setTitle("AzərStar");
-        primaryStage.setScene(new Scene(root,700,450));
+        primaryStage.setScene(new Scene(root,1000,600));
         primaryStage.show();
     }
 
