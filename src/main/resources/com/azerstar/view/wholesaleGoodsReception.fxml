@@ -10,12 +10,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.WholesaleGoodsReceptionController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.WholesaleGoodsReceptionController">
    <top>
       <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
-            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="622.0" layoutY="9.0" onMouseClicked="#profileAvatarImageMouseClicked">
+            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="894.0" layoutY="9.0" onMouseClicked="#profileAvatarImageMouseClicked">
                <image>
                   <Image url="@../images/profileavatar.jpg" />
                </image>
@@ -26,12 +26,12 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="157.0" layoutY="21.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topdan mal qəbulu" textAlignment="CENTER" wrappingWidth="388.591796875">
+            <Text layoutX="306.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Topdan mal qəbulu" textAlignment="CENTER" wrappingWidth="388.591796875">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
-            <TableView layoutX="5.0" layoutY="51.0" prefHeight="337.0" prefWidth="693.0">
+            <TableView layoutX="7.0" layoutY="35.0" prefHeight="500.0" prefWidth="830.0">
                <columns>
                   <TableColumn prefWidth="59.0" text="S/N" />
                   <TableColumn prefWidth="89.0" text="Tarix/saat" />
@@ -42,16 +42,26 @@
                   <TableColumn minWidth="0.0" prefWidth="74.0" text="Qeyd" />
                </columns>
             </TableView>
-            <Button layoutX="568.0" layoutY="6.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="124.0" text="Əlavə et">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
             <Text fx:id="dateText" layoutX="14.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="139.591796875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
+            <Button fx:id="editRetailGoodsReceptionButton" layoutX="859.0" layoutY="220.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="refreshRetailGoodsReceptionButton" layoutX="859.0" layoutY="381.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Səhifəni yenilə" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="createRetailGoodsReceptionButton" layoutX="859.0" layoutY="62.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Əlavə et">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </center>
