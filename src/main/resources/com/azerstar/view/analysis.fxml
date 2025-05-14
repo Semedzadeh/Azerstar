@@ -31,7 +31,7 @@
                   <Font size="36.0" />
                </font>
             </Text>
-            <TableView layoutY="31.0" prefHeight="402.0" prefWidth="1000.0">
+            <TableView layoutX="7.0" layoutY="31.0" prefHeight="402.0" prefWidth="985.0">
                <columns>
                   <TableColumn prefWidth="68.0" text="Tarix/saat" />
                   <TableColumn prefWidth="69.0" text="Müştəri adı" />
@@ -45,17 +45,17 @@
                   <TableColumn minWidth="0.0" prefWidth="97.0" text="Qeyd" />
                </columns>
             </TableView>
-            <Text fx:id="dateText" layoutX="850.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="139.591796875">
+            <Text fx:id="dateText" layoutX="14.0" layoutY="492.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="208.591796875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Button layoutX="213.0" layoutY="442.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" text="Düzəliş et">
+            <Button layoutX="375.0" layoutY="441.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" text="Düzəliş et">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button layoutX="609.0" layoutY="442.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" text="Səhifəni yenilə">
+            <Button layoutX="695.0" layoutY="441.0" mnemonicParsing="false" prefHeight="90.0" prefWidth="200.0" text="Səhifəni yenilə">
                <font>
                   <Font size="18.0" />
                </font>
