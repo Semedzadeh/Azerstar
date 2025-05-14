@@ -10,8 +10,8 @@ import java.sql.Statement;
 
 public class GoodsReceptionDAO {
 
-    public static ObservableList<GoodsReception> getAllRetailGoods() {
-        ObservableList<GoodsReception> goodsReceptionList = FXCollections.observableArrayList();
+    public static ObservableList<RetailGoodsReception> getAllRetailGoods() {
+        ObservableList<RetailGoodsReception> retailGoodsReceptionList = FXCollections.observableArrayList();
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -31,13 +31,13 @@ public class GoodsReceptionDAO {
                 double total_amount = resultSet.getDouble("total_amount");
                 String note = resultSet.getString("note");
 
-                goodsReceptionList.add(new GoodsReception(retail_receipt_id,date_time,customer_name,weight,unit_price,total_amount,note));
+                retailGoodsReceptionList.add(new RetailGoodsReception(retail_receipt_id,date_time,customer_name,weight,unit_price,total_amount,note));
             }
         } catch (Exception e) {
             e.printStackTrace();
 
         }
-        return goodsReceptionList;
+        return retailGoodsReceptionList;
     }
 
 }

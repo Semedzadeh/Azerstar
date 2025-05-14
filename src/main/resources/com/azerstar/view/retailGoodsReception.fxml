@@ -51,7 +51,7 @@
                   <Font size="36.0" />
                </font>
             </Text>
-            <Button fx:id="editRetailGoodsReceptionButton" layoutX="858.0" layoutY="202.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
+            <Button fx:id="updateRetailGoodsReceptionButton" layoutX="858.0" layoutY="202.0" mnemonicParsing="false" onAction="#updateRetailGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
                <font>
                   <Font size="18.0" />
                </font>

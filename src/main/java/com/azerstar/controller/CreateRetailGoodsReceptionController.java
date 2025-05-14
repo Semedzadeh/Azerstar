@@ -3,7 +3,9 @@ package com.azerstar.controller;
 import com.azerstar.config.DatabaseConnection;
 import com.azerstar.util.NumberInputFilter;
 import com.azerstar.util.ProfileMenu;
+import com.azerstar.util.SceneNavigator;
 import com.azerstar.util.Session;
+import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -13,6 +15,7 @@ import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -80,28 +83,38 @@ public class CreateRetailGoodsReceptionController {
     }
 
     @FXML
-    public void confirmButtonOnAction() {
+    public void confirmButtonOnAction(ActionEvent event) {
         if (customerNameTextField.getText() != null && !customerNameTextField.getText().trim().isEmpty()
                 && weightTextField.getText() != null && !weightTextField.getText().trim().isEmpty()) {
-            createGoods();
+            boolean success = createGoods();
+            if (success) {
+                createGoodsSuccessfullyMessage.setText("Uğurla əlavə edildi!");
+
+                PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
+                pause.setOnFinished(e -> SceneNavigator.goToScene(event, confirmButton, "/com/azerstar/view/retailGoodsReception.fxml"));
+                pause.play();
+            } else {
+                notnullFailedMessage.setText("Məlumatı əlavə etmək mümkün olmadı!");
+            }
+
         } else {
             notnullFailedMessage.setText("Müştəri adı və ya Məhsul miqdarı boş qoyula bilməz!");
         }
     }
 
-    public void createGoods() {
+    public boolean createGoods() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
         String customerName = customerNameTextField.getText();
         String note = noteTextField.getText();
 
-        // Say tipində olan sahələri təmizləyib çevir
         double weight = NumberInputFilter.parseToDouble(weightTextField.getText());
         double unitPrice = NumberInputFilter.parseToDouble(unitPriceTextField.getText());
         double totalAmount = NumberInputFilter.parseToDouble(totalAmountTextField.getText());
 
         String insertToRetailGoods = "INSERT INTO retail_receipt (customer_name, weight, unit_price, total_amount, note) VALUES (?, ?, ?, ?, ?)";
+
         try {
             PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRetailGoods);
             preparedStatement.setString(1, customerName);
@@ -112,9 +125,11 @@ public class CreateRetailGoodsReceptionController {
 
             preparedStatement.executeUpdate();
             createGoodsSuccessfullyMessage.setText("Uğurla əlavə edildi");
+            return true;
 
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 

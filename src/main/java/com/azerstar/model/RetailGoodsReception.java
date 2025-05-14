@@ -1,6 +1,6 @@
 package com.azerstar.model;
 
-public class GoodsReception {
+public class RetailGoodsReception {
 
     private int retail_receipt_id;
     private String date_time;
@@ -10,7 +10,7 @@ public class GoodsReception {
     private double total_amount;
     private String note;
 
-    public GoodsReception(int retail_receipt_id, String date_time, String customer_name, double weight, double unit_price, double total_amount, String note) {
+    public RetailGoodsReception(int retail_receipt_id, String date_time, String customer_name, double weight, double unit_price, double total_amount, String note) {
         this.retail_receipt_id = retail_receipt_id;
         this.date_time = date_time;
         this.customer_name = customer_name;
@@ -19,7 +19,7 @@ public class GoodsReception {
         this.total_amount = total_amount;
         this.note = note;
     }
-    public GoodsReception(String customer_name, String date_time, double weight, double unit_price, double total_amount, String note) {
+    public RetailGoodsReception(String customer_name, String date_time, double weight, double unit_price, double total_amount, String note) {
         this.customer_name = customer_name;
         this.date_time = date_time;
         this.weight = weight;
