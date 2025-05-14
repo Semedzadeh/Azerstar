@@ -2,6 +2,7 @@ package com.azerstar.controller;
 
 import com.azerstar.model.GoodsReception;
 import com.azerstar.model.GoodsReceptionDAO;
+import com.azerstar.model.User;
 import com.azerstar.util.ProfileMenu;
 import com.azerstar.util.SceneNavigator;
 import com.azerstar.util.Session;
@@ -10,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -89,6 +91,10 @@ public class RetailGoodsReceptionController  implements Initializable {
             e.printStackTrace();
         }
     }
-
+    public void refreshRetailGoodsReceptionButtonOnAction(ActionEvent event) {
+        ObservableList<GoodsReception> refreshRetailGoods = GoodsReceptionDAO.getAllRetailGoods();
+        retailGoodsTable.setItems(refreshRetailGoods);
+        retailGoodsTable.refresh();
+    }
 
 }

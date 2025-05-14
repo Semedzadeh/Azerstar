@@ -25,16 +25,16 @@
    <left>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="notnullFailedMessage" layoutX="181.0" layoutY="25.0" prefHeight="27.0" prefWidth="395.0" textFill="#b40909">
+            <Label fx:id="notnullFailedMessage" layoutX="272.0" layoutY="39.0" prefHeight="27.0" prefWidth="593.0" textFill="#b40909">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Button fx:id="confirmButton" layoutX="753.0" layoutY="102.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="110.0" prefWidth="220.0" text="Təsdiq et">
+            <Button fx:id="confirmButton" layoutX="737.0" layoutY="110.0" mnemonicParsing="false" onAction="#confirmButtonOnAction" prefHeight="110.0" prefWidth="220.0" text="Təsdiq et">
                <font>
                   <Font size="28.0" />
                </font></Button>
-            <Button fx:id="cancelButton" layoutX="753.0" layoutY="270.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="110.0" prefWidth="220.0" text="Bağla">
+            <Button fx:id="cancelButton" layoutX="737.0" layoutY="283.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="110.0" prefWidth="220.0" text="Bağla">
                <font>
                   <Font size="28.0" />
                </font>
@@ -64,12 +64,12 @@
                   <Font size="22.0" />
                </font>
             </Label>
-            <TextField fx:id="weightTextField" layoutX="308.0" layoutY="158.0" prefHeight="55.0" prefWidth="340.0" promptText="Miqdar (kq)">
+            <TextField fx:id="customerNameTextField" layoutX="308.0" layoutY="82.0" prefHeight="55.0" prefWidth="340.0" promptText="Müştəri adı">
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
-            <TextField fx:id="customerNameTextField" layoutX="308.0" layoutY="82.0" prefHeight="55.0" prefWidth="340.0" promptText="Müştəri adı">
+            <TextField fx:id="weightTextField" layoutX="308.0" layoutY="158.0" prefHeight="55.0" prefWidth="340.0" promptText="Miqdar (kq)">
                <font>
                   <Font size="18.0" />
                </font>
@@ -79,16 +79,6 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Label fx:id="createGoodsSuccessfullyMessage" layoutX="164.0" layoutY="25.0" prefHeight="27.0" prefWidth="430.0" textFill="#118a0d">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Label>
-            <Text layoutX="169.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Məlumatları doldurun " textAlignment="CENTER" wrappingWidth="620.391845703125">
-               <font>
-                  <Font size="30.0" />
-               </font>
-            </Text>
             <TextField fx:id="totalAmountTextField" layoutX="308.0" layoutY="310.0" prefHeight="55.0" prefWidth="340.0" promptText="Cəm məbləğ (AZN)">
                <font>
                   <Font size="18.0" />
@@ -99,7 +89,17 @@
                   <Font size="18.0" />
                </font>
             </TextField>
-            <Text fx:id="dateTimeText" layoutX="473.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="214.13671875">
+            <Label fx:id="createGoodsSuccessfullyMessage" layoutX="339.0" layoutY="39.0" prefHeight="27.0" prefWidth="398.0" textFill="#118a0d">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Text layoutX="169.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Məlumatları doldurun " textAlignment="CENTER" wrappingWidth="620.391845703125">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+            <Text fx:id="dateTimeText" layoutX="756.0" layoutY="483.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="214.13671875">
                <font>
                   <Font size="14.0" />
                </font>

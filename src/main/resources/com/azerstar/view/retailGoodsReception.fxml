@@ -12,10 +12,10 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.RetailGoodsReceptionController">
    <top>
-      <AnchorPane prefHeight="50.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="67.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
-            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="894.0" layoutY="11.0" onMouseClicked="#profileAvatarImageMouseClicked">
+            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="40.0" prefWidth="130.0" text="Geri qayıtmaq" />
+            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="900.0" layoutY="7.0" onMouseClicked="#profileAvatarImageMouseClicked">
                <image>
                   <Image url="@../images/profileavatar.jpg" />
                </image>
@@ -26,7 +26,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="retailGoodsTable" layoutX="8.0" layoutY="43.0" prefHeight="500.0" prefWidth="830.0">
+            <TableView fx:id="retailGoodsTable" layoutX="8.0" layoutY="27.0" prefHeight="501.0" prefWidth="830.0">
               <columns>
                 <TableColumn fx:id="dateTimeColumn" prefWidth="91.0" text="Tarix/saat" />
                   <TableColumn fx:id="custumerColumn" prefWidth="219.0" text="Müştəri adı" />
@@ -36,27 +36,27 @@
                   <TableColumn fx:id="noteColumn" minWidth="0.0" prefWidth="158.0" text="Qeyd" />
               </columns>
             </TableView>
-            <Button fx:id="createRetailGoodsReceptionButton" layoutX="858.0" layoutY="70.0" mnemonicParsing="false" onAction="#createRetailGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Əlavə et">
+            <Button fx:id="createRetailGoodsReceptionButton" layoutX="858.0" layoutY="52.0" mnemonicParsing="false" onAction="#createRetailGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Əlavə et">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-           <Text fx:id="dateText" layoutX="12.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="139.591796875">
+           <Text fx:id="dateText" layoutX="848.0" layoutY="522.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="139.591796875">
                <font>
                   <Font size="15.0" />
                </font>
             </Text>
-            <Text layoutX="309.0" layoutY="14.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pərakəndə mal qəbulu" textAlignment="CENTER" wrappingWidth="363.591796875">
+            <Text layoutX="309.0" layoutY="5.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pərakəndə mal qəbulu" textAlignment="CENTER" wrappingWidth="363.591796875">
                <font>
                   <Font size="36.0" />
                </font>
             </Text>
-            <Button fx:id="editRetailGoodsReceptionButton" layoutX="858.0" layoutY="226.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
+            <Button fx:id="editRetailGoodsReceptionButton" layoutX="858.0" layoutY="202.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="refreshRetailGoodsReceptionButton" layoutX="858.0" layoutY="384.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Səhifəni yenilə" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="refreshRetailGoodsReceptionButton" layoutX="858.0" layoutY="354.0" mnemonicParsing="false" onAction="#refreshRetailGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Səhifəni yenilə" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
