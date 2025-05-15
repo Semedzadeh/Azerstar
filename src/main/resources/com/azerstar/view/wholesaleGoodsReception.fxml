@@ -31,15 +31,14 @@
                   <Font size="36.0" />
                </font>
             </Text>
-            <TableView layoutX="7.0" layoutY="26.0" prefHeight="509.0" prefWidth="830.0">
+            <TableView fx:id="wholesaleGoodsTable" layoutX="7.0" layoutY="26.0" prefHeight="509.0" prefWidth="830.0">
                <columns>
-                  <TableColumn prefWidth="59.0" text="S/N" />
-                  <TableColumn prefWidth="89.0" text="Tarix/saat" />
-                  <TableColumn prefWidth="128.0" text="Müştəri adı" />
-                  <TableColumn prefWidth="92.0" text="Miqdar (kq)" />
-                  <TableColumn prefWidth="127.0" text="Məbləğ (1 kq/AZN)" />
-                  <TableColumn prefWidth="123.0" text="Cəm məbləğ (AZN)" />
-                  <TableColumn minWidth="0.0" prefWidth="74.0" text="Qeyd" />
+                  <TableColumn fx:id="dateTimeColumn" prefWidth="124.0" text="Tarix/saat" />
+                  <TableColumn fx:id="custumerColumn" prefWidth="192.0" text="Müştəri adı" />
+                  <TableColumn fx:id="weightColumn" prefWidth="117.0" text="Miqdar (kq)" />
+                  <TableColumn fx:id="unitPriceColumn" prefWidth="137.0" text="Məbləğ (1 kq/AZN)" />
+                  <TableColumn fx:id="totalAmountColumn" prefWidth="124.0" text="Cəm məbləğ (AZN)" />
+                  <TableColumn fx:id="noteColumn" minWidth="0.0" prefWidth="135.0" text="Qeyd" />
                </columns>
             </TableView>
             <Text fx:id="dateText" layoutX="849.0" layoutY="513.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="139.591796875">
@@ -47,17 +46,17 @@
                   <Font size="15.0" />
                </font>
             </Text>
-            <Button fx:id="editRetailGoodsReceptionButton" layoutX="859.0" layoutY="194.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
+            <Button fx:id="updateWholesaleGoodsReceptionButton" layoutX="859.0" layoutY="194.0" mnemonicParsing="false" onAction="#updateWholesaleGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Düzəliş et">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="refreshRetailGoodsReceptionButton" layoutX="859.0" layoutY="348.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Səhifəni yenilə" textAlignment="CENTER" wrapText="true">
+            <Button fx:id="refreshWholesaleGoodsReceptionButton" layoutX="859.0" layoutY="348.0" mnemonicParsing="false" onAction="#refreshWholesaleGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Səhifəni yenilə" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Button fx:id="createRetailGoodsReceptionButton" layoutX="859.0" layoutY="43.0" mnemonicParsing="false" prefHeight="130.0" prefWidth="120.0" text="Əlavə et">
+            <Button fx:id="createWholesaleGoodsReceptionButton" layoutX="859.0" layoutY="43.0" mnemonicParsing="false" onAction="#createWholesaleGoodsReceptionButtonOnAction" prefHeight="130.0" prefWidth="120.0" text="Əlavə et">
                <font>
                   <Font size="18.0" />
                </font>

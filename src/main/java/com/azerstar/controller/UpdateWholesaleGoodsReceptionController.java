@@ -22,10 +22,8 @@ import javafx.util.Duration;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
-public class UpdateRetailGoodsReceptionController {
+public class UpdateWholesaleGoodsReceptionController {
 
 
     @FXML
@@ -52,7 +50,7 @@ public class UpdateRetailGoodsReceptionController {
     private Label updateGoodsSuccessfullyMessage;
 
     private String currentUsername = Session.getCurrentUsername();
-    private int retail_receipt_id;
+    private int wholesale_receipt_id;
 
     @FXML
     public void initialize() {
@@ -71,22 +69,22 @@ public class UpdateRetailGoodsReceptionController {
     @FXML
     public void cancelButtonOnAction(ActionEvent event) {
         try {
-            Parent retailGoodsReceptionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/retailGoodsReception.fxml"));
+            Parent wholesaleGoodsReceptionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/wholesaleGoodsReception.fxml"));
             Stage stage = (Stage) cancelButton.getScene().getWindow();
-            stage.setScene(new Scene(retailGoodsReceptionScene));
+            stage.setScene(new Scene(wholesaleGoodsReceptionScene));
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void setRetailGoodsReception(int retail_receipt_id,String customer_name,double weight,double unit_price,double total_amount,String note){
+    public void setWholesaleGoodsReception(int wholesale_receipt_id,String customer_name,double weight,double unit_price,double total_amount,String note){
         customerNameTextField.setText(customer_name);
         weightTextField.setText(String.valueOf(weight));
         unitPriceTextField.setText(String.valueOf(unit_price));
         totalAmountTextField.setText(String.valueOf(total_amount));
         noteTextField.setText(note);
-        this.retail_receipt_id=retail_receipt_id;
+        this.wholesale_receipt_id = wholesale_receipt_id;
     }
     @FXML
     public void confirmButtonOnAction(ActionEvent event) {
@@ -106,7 +104,7 @@ public class UpdateRetailGoodsReceptionController {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String updateQuery = "UPDATE retail_receipt SET customer_name = ?, weight = ?, unit_price = ?, total_amount = ?, note = ? WHERE retail_receipt_id = ?";
+        String updateQuery = "UPDATE wholesale_receipt SET customer_name = ?, weight = ?, unit_price = ?, total_amount = ?, note = ? WHERE wholesale_receipt_id = ?";
         try {
             PreparedStatement preparedStatement = connectDB.prepareStatement(updateQuery);
             preparedStatement.setString(1, customer_name);
@@ -114,13 +112,13 @@ public class UpdateRetailGoodsReceptionController {
             preparedStatement.setDouble(3, unit_price);
             preparedStatement.setDouble(4, total_amount);
             preparedStatement.setString(5, note);
-            preparedStatement.setString(6, String.valueOf(retail_receipt_id));
+            preparedStatement.setString(6, String.valueOf(wholesale_receipt_id));
             int affectedRows = preparedStatement.executeUpdate();
 
             if (affectedRows > 0) {
                 updateGoodsSuccessfullyMessage.setText("Məlumatlar uğurla yeniləndi.");
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
-                pause.setOnFinished(e -> SceneNavigator.goToScene(event, confirmButton, "/com/azerstar/view/retailGoodsReception.fxml"));
+                pause.setOnFinished(e -> SceneNavigator.goToScene(event, confirmButton, "/com/azerstar/view/wholesaleGoodsReception.fxml"));
                 pause.play();
             } else {
                 notnullFailedMessage.setText("İstifadəçi tapılmadı.");

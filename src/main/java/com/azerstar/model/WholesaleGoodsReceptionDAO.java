@@ -8,22 +8,21 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class GoodsReceptionDAO {
+public class WholesaleGoodsReceptionDAO {
 
-    public static ObservableList<RetailGoodsReception> getAllRetailGoods() {
-        ObservableList<RetailGoodsReception> retailGoodsReceptionList = FXCollections.observableArrayList();
+    public static ObservableList<WholesaleGoodsReception> getAllWholesaleGoods(){
+        ObservableList<WholesaleGoodsReception> wholesaleGoodsReceptionList = FXCollections.observableArrayList();
 
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
 
-        String query = "select * from retail_receipt";
+        String query = "select * from wholesale_receipt";
 
-        try {
+        try{
             Statement statement = connectDB.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
-
             while (resultSet.next()) {
-                int retail_receipt_id = resultSet.getInt("retail_receipt_id");
+                int wholesale_receipt_id = resultSet.getInt("wholesale_receipt_id");
                 String date_time = resultSet.getString("date_time");
                 String customer_name = resultSet.getString("customer_name");
                 double weight = resultSet.getDouble("weight");
@@ -31,13 +30,14 @@ public class GoodsReceptionDAO {
                 double total_amount = resultSet.getDouble("total_amount");
                 String note = resultSet.getString("note");
 
-                retailGoodsReceptionList.add(new RetailGoodsReception(retail_receipt_id,date_time,customer_name,weight,unit_price,total_amount,note));
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
+                wholesaleGoodsReceptionList.add(new WholesaleGoodsReception(wholesale_receipt_id,date_time,customer_name,weight,unit_price,total_amount,note));
 
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return retailGoodsReceptionList;
+        return wholesaleGoodsReceptionList;
     }
 
 }

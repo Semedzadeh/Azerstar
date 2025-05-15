@@ -1,7 +1,7 @@
 package com.azerstar.controller;
 
 import com.azerstar.model.RetailGoodsReception;
-import com.azerstar.model.GoodsReceptionDAO;
+import com.azerstar.model.RetailGoodsReceptionDAO;
 import com.azerstar.util.ProfileMenu;
 import com.azerstar.util.SceneNavigator;
 import com.azerstar.util.Session;
@@ -66,7 +66,7 @@ public class RetailGoodsReceptionController  implements Initializable {
         totalAmountColumn.setCellValueFactory(new PropertyValueFactory<>("total_amount"));
         noteColumn.setCellValueFactory(new PropertyValueFactory<>("note"));
 
-        ObservableList<RetailGoodsReception> retailGoods = GoodsReceptionDAO.getAllRetailGoods();
+        ObservableList<RetailGoodsReception> retailGoods = RetailGoodsReceptionDAO.getAllRetailGoods();
         retailGoodsTable.setItems(retailGoods);
     }
 
@@ -92,7 +92,7 @@ public class RetailGoodsReceptionController  implements Initializable {
         }
     }
     public void refreshRetailGoodsReceptionButtonOnAction(ActionEvent event) {
-        ObservableList<RetailGoodsReception> refreshRetailGoods = GoodsReceptionDAO.getAllRetailGoods();
+        ObservableList<RetailGoodsReception> refreshRetailGoods = RetailGoodsReceptionDAO.getAllRetailGoods();
         retailGoodsTable.setItems(refreshRetailGoods);
         retailGoodsTable.refresh();
     }
@@ -125,12 +125,9 @@ public class RetailGoodsReceptionController  implements Initializable {
             Alert warning = new Alert(Alert.AlertType.WARNING);
             warning.setTitle("Xəbərdarlıq");
             warning.setHeaderText(null);
-            warning.setContentText("Zəhmət olmasa düzəliş etmək üçün istifadəçi seçin!");
+            warning.setContentText("Zəhmət olmasa düzəliş etmək üçün seçim edin!");
             warning.showAndWait();
         }
-
-
-
 
     }
 

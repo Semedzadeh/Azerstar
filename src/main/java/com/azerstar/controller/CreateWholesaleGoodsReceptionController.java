@@ -11,22 +11,21 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
 
-public class CreateRetailGoodsReceptionController {
-
+public class CreateWholesaleGoodsReceptionController {
     @FXML
     private Button cancelButton;
     @FXML
@@ -63,17 +62,15 @@ public class CreateRetailGoodsReceptionController {
         NumberInputFilter.allowOnlyDoubles(unitPriceTextField);
         NumberInputFilter.allowOnlyDoubles(totalAmountTextField);
     }
-
     @FXML
     public void profileAvatarImageMouseClicked() {
         Stage stage = (Stage) profileAvatarImageView.getScene().getWindow();
         ProfileMenu.attachProfileMenu(profileAvatarImageView, currentUsername, stage);
     }
-
     @FXML
     public void cancelButtonOnAction(ActionEvent event) {
         try {
-            Parent retailGoodsReceptionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/retailGoodsReception.fxml"));
+            Parent retailGoodsReceptionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/wholesaleGoodsReception.fxml"));
             Stage stage = (Stage) cancelButton.getScene().getWindow();
             stage.setScene(new Scene(retailGoodsReceptionScene));
             stage.show();
@@ -81,7 +78,6 @@ public class CreateRetailGoodsReceptionController {
             e.printStackTrace();
         }
     }
-
     @FXML
     public void confirmButtonOnAction(ActionEvent event) {
         if (customerNameTextField.getText() != null && !customerNameTextField.getText().trim().isEmpty()
@@ -91,7 +87,7 @@ public class CreateRetailGoodsReceptionController {
                 createGoodsSuccessfullyMessage.setText("Uğurla əlavə edildi!");
 
                 PauseTransition pause = new PauseTransition(Duration.seconds(0.5));
-                pause.setOnFinished(e -> SceneNavigator.goToScene(event, confirmButton, "/com/azerstar/view/retailGoodsReception.fxml"));
+                pause.setOnFinished(e -> SceneNavigator.goToScene(event, confirmButton, "/com/azerstar/view/wholesaleGoodsReception.fxml"));
                 pause.play();
             } else {
                 notnullFailedMessage.setText("Məlumatı əlavə etmək mümkün olmadı!");
@@ -101,7 +97,6 @@ public class CreateRetailGoodsReceptionController {
             notnullFailedMessage.setText("Müştəri adı və ya Məhsul miqdarı boş qoyula bilməz!");
         }
     }
-
     private boolean createGoods() {
         DatabaseConnection connectNow = new DatabaseConnection();
         Connection connectDB = connectNow.getConnection();
@@ -113,10 +108,10 @@ public class CreateRetailGoodsReceptionController {
         double unitPrice = NumberInputFilter.parseToDouble(unitPriceTextField.getText());
         double totalAmount = NumberInputFilter.parseToDouble(totalAmountTextField.getText());
 
-        String insertToRetailGoods = "INSERT INTO retail_receipt (customer_name, weight, unit_price, total_amount, note) VALUES (?, ?, ?, ?, ?)";
+        String insertToWholesaleGoods = "INSERT INTO wholesale_receipt (customer_name, weight, unit_price, total_amount, note) VALUES (?, ?, ?, ?, ?)";
 
         try {
-            PreparedStatement preparedStatement = connectDB.prepareStatement(insertToRetailGoods);
+            PreparedStatement preparedStatement = connectDB.prepareStatement(insertToWholesaleGoods);
             preparedStatement.setString(1, customerName);
             preparedStatement.setDouble(2, weight);
             preparedStatement.setDouble(3, unitPrice);
