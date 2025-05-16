@@ -18,6 +18,8 @@ module com.azerstar {
     exports com.azerstar.controller;
     exports com.azerstar.model;
     exports com.azerstar.service;
+    exports com.azerstar.controller.goodsReceipt;
+    opens com.azerstar.controller.goodsReceipt to javafx.fxml;
 
 }
 

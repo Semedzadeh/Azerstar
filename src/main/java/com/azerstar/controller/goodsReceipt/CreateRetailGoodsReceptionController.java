@@ -1,4 +1,4 @@
-package com.azerstar.controller;
+package com.azerstar.controller.goodsReceipt;
 
 import com.azerstar.config.DatabaseConnection;
 import com.azerstar.util.NumberInputFilter;
@@ -18,12 +18,10 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ResourceBundle;
 
 public class CreateRetailGoodsReceptionController {
 
