@@ -20,6 +20,16 @@ module com.azerstar {
     exports com.azerstar.service;
     exports com.azerstar.controller.goodsReceipt;
     opens com.azerstar.controller.goodsReceipt to javafx.fxml;
+    exports com.azerstar.controller.analysis;
+    opens com.azerstar.controller.analysis to javafx.fxml;
+    exports com.azerstar.controller.drying;
+    opens com.azerstar.controller.drying to javafx.fxml;
+    exports com.azerstar.controller.warehouse;
+    opens com.azerstar.controller.warehouse to javafx.fxml;
+    exports com.azerstar.controller.report;
+    opens com.azerstar.controller.report to javafx.fxml;
+    exports com.azerstar.controller.settings;
+    opens com.azerstar.controller.settings to javafx.fxml;
 
 }
 

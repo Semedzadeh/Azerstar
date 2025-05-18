@@ -42,7 +42,7 @@ public class MainMenuController  {
     public void goodsReceiptButtonOnAction(ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent goodsReceiptButtonScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/goodsReceipt.fxml"));
+            Parent goodsReceiptButtonScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/goodsReceipt/goodsReceipt.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) goodsReceiptButton.getScene().getWindow();
@@ -60,7 +60,7 @@ public class MainMenuController  {
     public void analysisButtonOnAction(ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent analysisButtonScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/analysis.fxml"));
+            Parent analysisButtonScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/analysis/analysis.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) analysisButton.getScene().getWindow();
@@ -78,7 +78,7 @@ public class MainMenuController  {
     public void dryingButtonOnAction(ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent dryingScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/drying.fxml"));
+            Parent dryingScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/drying/drying.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) dryingButton.getScene().getWindow();
@@ -96,7 +96,7 @@ public class MainMenuController  {
     public void kernelWarehouseButtonOnAction(ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent kernelWarehouseScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/kernelWarehouse.fxml"));
+            Parent kernelWarehouseScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/warehouse/kernelWarehouse.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) kernelWarehouseButton.getScene().getWindow();
@@ -114,7 +114,7 @@ public class MainMenuController  {
     public void reportButtonOnAction(ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent reportScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/report.fxml"));
+            Parent reportScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/report/report.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) reportButton.getScene().getWindow();
@@ -132,7 +132,7 @@ public class MainMenuController  {
     public void settingsButtonOnAction(ActionEvent event) {
         try {
             // Goods Receipt getmek ucun FXML faylı
-            Parent settingsScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/settings.fxml"));
+            Parent settingsScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/settings/settings.fxml"));
 
             // Hal-hazırkı stage-i tap
             Stage stage = (Stage) settingsButton.getScene().getWindow();

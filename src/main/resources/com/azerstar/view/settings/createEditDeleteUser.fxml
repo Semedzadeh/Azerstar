@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.settings.CreateEditDeleteUserController">
+   <top>
+      <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="backButton" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#backButtonOnAction" prefHeight="33.0" prefWidth="122.0" text="Geri qayıtmaq" />
+            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="622.0" layoutY="9.0" onMouseClicked="#profileAvatarImageMouseClicked">
+               <image>
+                  <Image url="@../../images/profileavatar.jpg" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
+   <center>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView fx:id="usersTable" layoutX="9.0" layoutY="38.0" prefHeight="298.0" prefWidth="682.0">
+              <columns>
+                <TableColumn fx:id="nameColumn" minWidth="150.0" prefWidth="189.60001850128174" text="Ad" />
+                <TableColumn fx:id="surnameColumn" minWidth="150.0" prefWidth="183.20001220703125" text="Soyad" />
+                  <TableColumn fx:id="usernameColumn" prefWidth="195.199951171875" text="Istifadçi adı" />
+                  <TableColumn fx:id="branchColumn" prefWidth="115.20001220703125" text="Filial" />
+              </columns>
+            </TableView>
+            <Button fx:id="createUserButton" layoutX="93.0" layoutY="343.0" mnemonicParsing="false" onAction="#createUserButtonOnAction" prefHeight="40.0" prefWidth="123.0" text="Əlavə et" textAlignment="CENTER" textFill="#0d0d0d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="editUserButton" layoutX="300.0" layoutY="343.0" mnemonicParsing="false" onAction="#editUserButtonOnAction" prefHeight="40.0" prefWidth="134.0" text="Düzəliş et" textAlignment="CENTER" textFill="#050505">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Button fx:id="deleteUserButton" layoutX="510.0" layoutY="343.0" mnemonicParsing="false" onAction="#deleteUserButtonOnAction" prefHeight="40.0" prefWidth="134.0" text="Sil" textAlignment="CENTER" textFill="#0d0d0d">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+            <Text layoutX="139.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="İstifadəçi əlavə və düzəliş edilməsi" textAlignment="CENTER" wrappingWidth="476.591796875">
+               <font>
+                  <Font size="30.0" />
+               </font>
+            </Text>
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
