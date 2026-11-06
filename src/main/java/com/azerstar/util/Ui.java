@@ -127,7 +127,7 @@ public final class Ui {
 
         Label name = new Label(username);
         name.getStyleClass().add("user-name");
-        Label branch = new Label(Session.accessLabel() + (Session.isAdmin() ? "  ·  Admin" : ""));
+        Label branch = new Label(Session.accessLabel() + (Session.isAnyAdmin() ? "  ·  " + Session.getRole().label() : ""));
         branch.getStyleClass().add("user-branch");
         VBox text = new VBox(1, name, branch);
         text.setAlignment(javafx.geometry.Pos.CENTER_LEFT);

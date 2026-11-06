@@ -25,7 +25,7 @@
          <children>
             <Label styleClass="page-title" text="Filialı seçin" />
             <Label styleClass="page-subtitle" text="Hansı filialın məlumatları ilə işləyəcəksiniz?" />
-            <FlowPane fx:id="grid" alignment="CENTER" hgap="28.0" maxWidth="720.0" prefWrapLength="700.0" vgap="28.0">
+            <FlowPane fx:id="grid" alignment="CENTER" hgap="28.0" maxWidth="940.0" prefWrapLength="920.0" vgap="28.0">
                <VBox.margin>
                   <Insets top="26.0" />
                </VBox.margin>

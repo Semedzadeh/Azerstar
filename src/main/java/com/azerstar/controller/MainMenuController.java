@@ -30,7 +30,11 @@ public class MainMenuController {
                 Cards.menuCard("flask", "green", "Analiz", "Laboratoriya nəticələri", Session.can(Section.ANALYSIS), Menus::analysis),
                 Cards.menuCard("drop", "amber", "Qurutma", "Çənlər və açıq qurutma", Session.can(Section.DRYING), Menus::drying),
                 Cards.menuCard("warehouse", "slate", "Anbar", "Fındıq, qırma, ləpə, transfer", Session.can(Section.WAREHOUSE), Menus::warehouse),
-                Cards.menuCard("bars", "plum", "Hesabat", "Hesabatlar və izlənmə", Session.can(Section.REPORT), Menus::report),
-                Cards.menuCard("sliders", "gray", "Ayarlar", "İstifadəçilər, çənlər", Session.can(Section.SETTINGS), Menus::settings));
+                Cards.menuCard("bars", "plum", "Hesabat", "Hesabatlar və izlənmə", Session.can(Section.REPORT), Menus::report));
+
+        // filialın öz ayarları yalnız adminlərə göstərilir, sadə istifadəçi onu heç görmür
+        if (Session.isAnyAdmin()) {
+            grid.getChildren().add(Cards.menuCard("sliders", "teal", "Filial ayarları", "İstifadəçilər və çənlər", true, Menus::branches));
+        }
     }
 }

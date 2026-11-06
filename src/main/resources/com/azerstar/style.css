@@ -290,3 +290,5 @@
 .card-busy { -fx-border-color: #12B76A; -fx-border-width: 0 0 0 5; }
 .card-overdue { -fx-border-color: #F04438; -fx-border-width: 0 0 0 5; }
 .card-free { -fx-border-color: #E4E7EC; }
+
+.tone-teal { -fx-background-color: linear-gradient(to bottom right, #2ED3B7, #0E9384); }

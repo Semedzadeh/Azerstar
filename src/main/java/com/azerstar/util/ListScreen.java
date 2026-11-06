@@ -17,7 +17,12 @@ public abstract class ListScreen extends Screen {
     private final Label countLabel = new Label();
 
     protected ListScreen(String title, Runnable onBack, TableView<Row> table) {
-        super(title, onBack, true);
+        this(title, onBack, table, true);
+    }
+
+    /** branchFilter=false: filial filtri göstərilmir (məsələn filialların özünün siyahısında). */
+    protected ListScreen(String title, Runnable onBack, TableView<Row> table, boolean branchFilter) {
+        super(title, onBack, branchFilter);
         this.table = table;
         toolbar.setAlignment(Pos.CENTER_LEFT);
         countLabel.getStyleClass().add("count-label");

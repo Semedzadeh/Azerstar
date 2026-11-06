@@ -6,6 +6,9 @@ import com.azerstar.screen.drying.OtherDryingScreen;
 import com.azerstar.screen.drying.TankDryingScreen;
 import com.azerstar.screen.receipt.ReceiptScreen;
 import com.azerstar.screen.report.ReportScreen;
+import com.azerstar.screen.settings.AdminsScreen;
+import com.azerstar.screen.settings.BranchesScreen;
+import com.azerstar.screen.settings.DatabaseSettingsScreen;
 import com.azerstar.screen.settings.TanksScreen;
 import com.azerstar.screen.settings.UsersScreen;
 import com.azerstar.screen.warehouse.HazelnutStockScreen;
@@ -17,6 +20,7 @@ import com.azerstar.util.Db;
 import com.azerstar.util.Nav;
 import com.azerstar.util.Row;
 import com.azerstar.util.Session;
+
 
 /** Bütün menyu və ekranlara keçidlər bir yerdə. */
 public final class Menus {
@@ -67,9 +71,23 @@ public final class Menus {
         new ReportScreen().show();
     }
 
-    public static void settings() {
-        new MenuScreen("Ayarlar", "İstifadəçilər və qurutma çənlərinin idarəsi.", Menus::main,
-                new Tile("İstifadəçilər və icazələr", "Rollar, filial və bölmə icazələri", "users", "slate", () -> new UsersScreen().show()),
+    /** Filial ayarları (filialın daxilində): seçilmiş filialın istifadəçiləri və çənləri. Baş admin və filial admini üçün. */
+    public static void branches() {
+        new MenuScreen("Filial ayarları", "Seçilmiş filialın istifadəçiləri və qurutma çənləri.", Menus::main,
+                new Tile("İstifadəçilər və icazələr", "İstifadəçilər, filial və bölmə icazələri", "users", "slate", () -> new UsersScreen().show()),
                 new Tile("Qurutma çənləri", "Çən əlavə et, tutum, aktiv/passiv", "tank", "amber", () -> new TanksScreen().show())).show();
+    }
+
+    /** Filial seçimi ekranı (girişdən sonra). */
+    public static void branchSelection() {
+        Nav.goFxml("/com/azerstar/view/branchSelection.fxml");
+    }
+
+    /** Baş admin ayarları: adminlər, filialların özü, verilənlər bazası bağlantısı. Yalnız baş admin. */
+    public static void settings() {
+        new MenuScreen("Baş admin ayarları", "Adminlər, filiallar və verilənlər bazası bağlantısı.", Menus::branchSelection,
+                new Tile("Adminlər", "Baş admin və filial adminləri", "users", "plum", () -> new AdminsScreen().show()),
+                new Tile("Filiallar", "Filial əlavə et, adını dəyiş, sil", "building", "teal", () -> new BranchesScreen().show()),
+                new Tile("Verilənlər bazası", "Server, port, istifadəçi, şifrə", "sliders", "gray", () -> new DatabaseSettingsScreen().show())).show();
     }
 }

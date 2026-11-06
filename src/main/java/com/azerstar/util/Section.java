@@ -1,13 +1,12 @@
 package com.azerstar.util;
 
-/** İstifadəçi icazələrinin verildiyi bölmələr. */
+/** Sadə istifadəçilərə icazə verilən iş bölmələri (adminlərin ayarları rola görə ayrıca idarə olunur). */
 public enum Section {
     RECEIPT("Mal qəbulu"),
     ANALYSIS("Analiz"),
     DRYING("Qurutma"),
     WAREHOUSE("Anbar"),
-    REPORT("Hesabat"),
-    SETTINGS("Ayarlar");
+    REPORT("Hesabat");
 
     private final String title;
 

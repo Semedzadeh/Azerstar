@@ -5,6 +5,7 @@ import com.azerstar.util.Choice;
 import com.azerstar.util.Db;
 import com.azerstar.util.Nav;
 import com.azerstar.util.Reminders;
+import com.azerstar.util.Role;
 import com.azerstar.util.Row;
 import com.azerstar.util.Section;
 import com.azerstar.util.Session;
@@ -49,7 +50,7 @@ public class LoginController {
                 loginMessageLabel.setText("Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır.");
                 return;
             }
-            boolean admin = "ADMIN".equals(user.str("role"));
+            Role role = Role.of(user.str("role"));
             int accountId = user.integer("account_id");
 
             Set<Section> allowed = EnumSet.noneOf(Section.class);
@@ -60,17 +61,18 @@ public class LoginController {
                     // naməlum bölmə adı varsa keç
                 }
             }
-            if (!admin && allowed.isEmpty()) {
+            if (role == Role.USER && allowed.isEmpty()) {
                 loginMessageLabel.setText("Bu istifadəçiyə heç bir bölmə üçün icazə verilməyib.");
                 return;
             }
 
-            // admin bütün filialları görür, digərləri yalnız özünə verilənləri
+            // baş admin bütün filialları görür, digərləri yalnız özünə verilənləri
             List<Choice> branches = new ArrayList<>();
-            String sql = admin
+            boolean all = role == Role.SUPER_ADMIN;
+            String sql = all
                     ? "SELECT branch_id, name FROM branch ORDER BY branch_id"
                     : "SELECT b.branch_id, b.name FROM user_branch ub JOIN branch b ON b.branch_id = ub.branch_id WHERE ub.account_id = ? ORDER BY b.branch_id";
-            for (Row b : admin ? Db.query(sql) : Db.query(sql, accountId)) {
+            for (Row b : all ? Db.query(sql) : Db.query(sql, accountId)) {
                 branches.add(new Choice(b.integer("branch_id"), b.str("name")));
             }
             if (branches.isEmpty()) {
@@ -78,14 +80,14 @@ public class LoginController {
                 return;
             }
 
-            Session.login(accountId, user.str("username"), admin, allowed, branches, user.integer("branch_id"));
+            Session.login(accountId, user.str("username"), role, allowed, branches, user.integer("branch_id"));
         } catch (Db.DbException e) {
             loginMessageLabel.setText(e.getMessage());
             return;
         }
 
-        // bir filialı varsa seçim ekranı lazım deyil
-        if (Session.hasManyBranches()) {
+        // bir filialı olan istifadəçi və ya filial admini üçün seçim ekranı lazım deyil; baş admin isə həmişə görür (ayarlar orada)
+        if (Session.hasManyBranches() || Session.isSuperAdmin()) {
             Nav.goFxml("/com/azerstar/view/branchSelection.fxml");
         } else {
             Menus.main();

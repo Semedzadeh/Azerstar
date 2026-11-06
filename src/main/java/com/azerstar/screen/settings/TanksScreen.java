@@ -21,7 +21,7 @@ import java.util.List;
 public class TanksScreen extends ListScreen {
 
     public TanksScreen() {
-        super("Qurutma çənləri", Menus::settings,
+        super("Qurutma çənləri", Menus::branches,
                 DataTable.create("Çən", "name", "Filial", "branch_name", "Tutum (kq)", "capacity_kg",
                         "Vəziyyət", "active_text", "Hazırda", "busy_text"));
         init(Ui.primary("Əlavə et", () -> openForm(null)),

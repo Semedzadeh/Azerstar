@@ -36,7 +36,7 @@ public class ProfileMenu {
 
         Label name = new Label(currentUsername);
         name.getStyleClass().add("profile-menu-name");
-        Label details = new Label("Filial: " + Session.accessLabel() + (Session.isAdmin() ? "  ·  Admin" : ""));
+        Label details = new Label("Filial: " + Session.accessLabel() + (Session.isAnyAdmin() ? "  ·  " + Session.getRole().label() : ""));
         details.getStyleClass().add("profile-menu-detail");
         VBox info = new VBox(2, name, details);
         info.setPadding(new Insets(6, 12, 6, 12));
@@ -47,6 +47,12 @@ public class ProfileMenu {
             MenuItem switchItem = new MenuItem("Filialı dəyiş");
             switchItem.setOnAction(e -> Nav.goFxml("/com/azerstar/view/branchSelection.fxml"));
             contextMenu.getItems().add(switchItem);
+        }
+
+        if (Session.isSuperAdmin()) {
+            MenuItem adminItem = new MenuItem("Baş admin ayarları");
+            adminItem.setOnAction(e -> com.azerstar.screen.Menus.settings());
+            contextMenu.getItems().add(adminItem);
         }
 
         MenuItem logoutItem = new MenuItem("Çıxış et");

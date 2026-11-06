@@ -10,7 +10,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.layout.FlowPane;
 
-/** Girişdən sonra: yalnız istifadəçiyə icazə verilən filiallar göstərilir. */
+/** Girişdən sonra: yalnız istifadəçiyə icazə verilən filiallar göstərilir; baş admin üçün əlavə olaraq ayarlar kartı. */
 public class BranchSelectionController {
 
     private static final String[] TONES = {"hazel", "green", "slate", "plum"};
@@ -24,6 +24,11 @@ public class BranchSelectionController {
         for (Choice branch : Session.getAllowedBranches()) {
             grid.getChildren().add(Cards.menuCard("building", TONES[i++ % TONES.length], branch.label(),
                     branch.label() + " filialının məlumatları", true, () -> choose(branch.id())));
+        }
+        // baş admin ayarları (adminlər, filiallar, baza bağlantısı) yalnız baş adminin seçim ekranında görünür
+        if (Session.isSuperAdmin()) {
+            grid.getChildren().add(Cards.menuCard("sliders", "gray", "Baş admin ayarları",
+                    "Adminlər, filiallar, baza bağlantısı", true, Menus::settings));
         }
     }
 

@@ -9,7 +9,7 @@ public class Session {
     private static String currentUsername;
     private static int accountId;
     private static int homeBranchId = 1;
-    private static boolean admin;
+    private static Role role = Role.USER;
     private static Set<Section> permissions = EnumSet.noneOf(Section.class);
 
     // istifadəçinin görə bildiyi filiallar (admin üçün hamısı)
@@ -27,11 +27,11 @@ public class Session {
         return currentUsername;
     }
 
-    public static void login(int account, String username, boolean isAdmin, Set<Section> allowed,
+    public static void login(int account, String username, Role userRole, Set<Section> allowed,
                              List<Choice> branches, int homeBranch) {
         accountId = account;
         currentUsername = username;
-        admin = isAdmin;
+        role = userRole;
         permissions = allowed;
         allowedBranches = branches;
         homeBranchId = homeBranch;
@@ -44,12 +44,33 @@ public class Session {
         return accountId;
     }
 
-    public static boolean isAdmin() {
-        return admin;
+    public static Role getRole() {
+        return role;
     }
 
+    public static boolean isSuperAdmin() {
+        return role == Role.SUPER_ADMIN;
+    }
+
+    public static boolean isBranchAdmin() {
+        return role == Role.BRANCH_ADMIN;
+    }
+
+    /** Baş admin və ya filial admini. */
+    public static boolean isAnyAdmin() {
+        return role != Role.USER;
+    }
+
+    /** Adminlər bütün iş bölmələrini görür (öz filialları daxilində), sadə istifadəçilər yalnız icazə veriləni. */
     public static boolean can(Section section) {
-        return admin || permissions.contains(section);
+        return isAnyAdmin() || permissions.contains(section);
+    }
+
+    /** Baş admin filial əlavə edib-sildikdən sonra siyahını yeniləyir. */
+    public static void setAllowedBranches(List<Choice> branches) {
+        allowedBranches = branches;
+        if (viewBranchId != 0 && !canAccessBranch(viewBranchId)) viewBranchId = 0;
+        if (!canAccessBranch(branchId) && !branches.isEmpty()) branchId = branches.get(0).id();
     }
 
     // ---------- filiallar ----------
@@ -106,6 +127,12 @@ public class Session {
         return allowedBranches.size() > 1 ? "Bütün filiallar" : getBranchName();
     }
 
+    /** İstifadəçinin icazəli olduğu bütün filialların nömrələri (süzgəcdən asılı olmayaraq), məsələn "1,2". */
+    public static String allowedIds() {
+        if (allowedBranches.isEmpty()) return "0";
+        return allowedBranches.stream().map(b -> String.valueOf(b.id())).collect(Collectors.joining(","));
+    }
+
     /** SQL üçün: görünən filialların nömrələri, məsələn "1" və ya "1,2". Yalnız tam ədədlərdən qurulur. */
     public static String scopeIds() {
         if (viewBranchId != 0) return String.valueOf(viewBranchId);
@@ -121,7 +148,7 @@ public class Session {
     public static void clearSession() {
         currentUsername = null;
         accountId = 0;
-        admin = false;
+        role = Role.USER;
         permissions = EnumSet.noneOf(Section.class);
         allowedBranches = List.of();
         viewBranchId = 0;

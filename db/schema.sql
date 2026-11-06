@@ -22,12 +22,13 @@ CREATE TABLE IF NOT EXISTS user_account (
     username   VARCHAR(100) NOT NULL UNIQUE,
     password   VARCHAR(255) NOT NULL,
     branch_id  INT NOT NULL,
-    role       ENUM('ADMIN','USER') NOT NULL DEFAULT 'USER',
+    role       ENUM('SUPER_ADMIN','BRANCH_ADMIN','USER') NOT NULL DEFAULT 'USER',
     CONSTRAINT fk_user_branch FOREIGN KEY (branch_id) REFERENCES branch (branch_id)
 );
 
--- Bölmə icazələri: RECEIPT, ANALYSIS, DRYING, WAREHOUSE, REPORT, SETTINGS
--- Bölməni görən orada işləyə də bilir. Admin üçün sətir lazım deyil.
+-- Rollar: SUPER_ADMIN (hər şey, filiallar, adminlər, baza bağlantısı), BRANCH_ADMIN (öz filiallarının istifadəçiləri və çənləri),
+-- USER (yalnız icazə verilən bölmələr).
+-- Sadə istifadəçinin bölmə icazələri: RECEIPT, ANALYSIS, DRYING, WAREHOUSE, REPORT. Adminlər üçün sətir lazım deyil.
 CREATE TABLE IF NOT EXISTS user_permission (
     account_id INT NOT NULL,
     section    VARCHAR(30) NOT NULL,
@@ -211,9 +212,9 @@ CREATE TABLE IF NOT EXISTS kernel_sale (
 -- İlkin məlumatlar
 INSERT IGNORE INTO branch (branch_id, name) VALUES (1, 'Şəki'), (2, 'Zaqatala');
 
--- Yalnız lokal sınaq üçün admin istifadəçi
+-- Yalnız lokal sınaq üçün baş admin
 INSERT IGNORE INTO user_account (firstname, lastname, username, password, branch_id, role)
-VALUES ('Test', 'İstifadəçi', 'test', 'test', 1, 'ADMIN');
+VALUES ('Test', 'İstifadəçi', 'test', 'test', 1, 'SUPER_ADMIN');
 
 INSERT IGNORE INTO user_branch (account_id, branch_id) SELECT account_id, branch_id FROM user_account WHERE username = 'test';
 
