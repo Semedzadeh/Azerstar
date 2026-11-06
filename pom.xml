@@ -160,7 +160,7 @@
                     <execution>
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.azerstar.azerstar.HelloApplication</mainClass>
+                            <mainClass>com.azerstar/com.azerstar.App</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>

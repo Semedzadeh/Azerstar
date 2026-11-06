@@ -1,36 +1,37 @@
 package com.azerstar.controller;
 
-import com.azerstar.util.SceneNavigator;
-import com.azerstar.config.DatabaseConnection;
+import com.azerstar.screen.Menus;
+import com.azerstar.util.Choice;
+import com.azerstar.util.Db;
+import com.azerstar.util.Nav;
+import com.azerstar.util.Reminders;
+import com.azerstar.util.Row;
+import com.azerstar.util.Section;
 import com.azerstar.util.Session;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
-import javafx.event.ActionEvent;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
+import java.util.Set;
 
 public class LoginController {
 
-    @FXML
-    private Button backButton;
     @FXML
     private Label loginMessageLabel;
     @FXML
     private TextField usernameTextField;
     @FXML
     private PasswordField passwordTextField;
+
     @FXML
-    private Button loginButton;
+    public void initialize() {
+        passwordTextField.setOnAction(e -> loginButtonOnAction(null));
+    }
 
     public void loginButtonOnAction(ActionEvent event) {
         String username = usernameTextField.getText().trim();
@@ -41,47 +42,59 @@ public class LoginController {
             return;
         }
 
-        if (validateLogin(username, password)) {
-            Session.setCurrentUsername(username); // istifadəçi adı yadda saxlanılır
-            goToMainMenu();
+        try {
+            Row user = Db.queryOne("SELECT account_id, username, role, branch_id FROM user_account WHERE username = ? AND password = ?",
+                    username, password);
+            if (user == null) {
+                loginMessageLabel.setText("Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır.");
+                return;
+            }
+            boolean admin = "ADMIN".equals(user.str("role"));
+            int accountId = user.integer("account_id");
+
+            Set<Section> allowed = EnumSet.noneOf(Section.class);
+            for (Row p : Db.query("SELECT section FROM user_permission WHERE account_id = ?", accountId)) {
+                try {
+                    allowed.add(Section.valueOf(p.str("section")));
+                } catch (IllegalArgumentException ignored) {
+                    // naməlum bölmə adı varsa keç
+                }
+            }
+            if (!admin && allowed.isEmpty()) {
+                loginMessageLabel.setText("Bu istifadəçiyə heç bir bölmə üçün icazə verilməyib.");
+                return;
+            }
+
+            // admin bütün filialları görür, digərləri yalnız özünə verilənləri
+            List<Choice> branches = new ArrayList<>();
+            String sql = admin
+                    ? "SELECT branch_id, name FROM branch ORDER BY branch_id"
+                    : "SELECT b.branch_id, b.name FROM user_branch ub JOIN branch b ON b.branch_id = ub.branch_id WHERE ub.account_id = ? ORDER BY b.branch_id";
+            for (Row b : admin ? Db.query(sql) : Db.query(sql, accountId)) {
+                branches.add(new Choice(b.integer("branch_id"), b.str("name")));
+            }
+            if (branches.isEmpty()) {
+                loginMessageLabel.setText("Bu istifadəçiyə heç bir filial üçün icazə verilməyib.");
+                return;
+            }
+
+            Session.login(accountId, user.str("username"), admin, allowed, branches, user.integer("branch_id"));
+        } catch (Db.DbException e) {
+            loginMessageLabel.setText(e.getMessage());
+            return;
+        }
+
+        // bir filialı varsa seçim ekranı lazım deyil
+        if (Session.hasManyBranches()) {
+            Nav.goFxml("/com/azerstar/view/branchSelection.fxml");
         } else {
-            loginMessageLabel.setText("Daxil etdiyiniz istifadəçi adı və ya şifrə yanlışdır.");
+            Menus.main();
+            Reminders.start();
         }
     }
 
     @FXML
     private void backButtonOnAction(ActionEvent event) {
-        SceneNavigator.goToScene(event, backButton, "/com/azerstar/view/branchSelection.fxml");
-    }
-
-    private boolean validateLogin(String username, String password) {
-        DatabaseConnection connectNow = new DatabaseConnection();
-        Connection connectDB = connectNow.getConnection();
-
-        String verifyLogin = "SELECT * FROM user_account WHERE username = ? AND password = ?";
-
-        try (PreparedStatement preparedStatement = connectDB.prepareStatement(verifyLogin)) {
-            preparedStatement.setString(1, username);
-            preparedStatement.setString(2, password);
-
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
-
-    private void goToMainMenu() {
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/azerstar/view/mainMenu.fxml"));
-            Parent mainMenuScene = loader.load();
-            Stage stage = (Stage) loginButton.getScene().getWindow();
-            stage.setScene(new Scene(mainMenuScene));
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        Nav.goFxml("/com/azerstar/view/entrance.fxml");
     }
 }

@@ -1,64 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.MainMenuController">
+<BorderPane prefHeight="600.0" prefWidth="1000.0" styleClass="screen" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.azerstar.controller.MainMenuController">
    <top>
-      <AnchorPane prefHeight="58.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER_LEFT" spacing="12.0" styleClass="top-bar">
+         <padding>
+            <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
+         </padding>
          <children>
-            <ImageView fx:id="profileAvatarImageView" fitHeight="40.0" fitWidth="51.0" layoutX="903.0" layoutY="9.0" onMouseClicked="#profileAvatarImageMouseClicked">
-               <image>
-                  <Image url="@../images/profileavatar.jpg" />
-               </image>
-            </ImageView>
+            <Label styleClass="brand-mark" text="A" />
+            <Label styleClass="brand-name" text="AzərStar" />
+            <Region HBox.hgrow="ALWAYS" />
+            <HBox fx:id="userBox" alignment="CENTER_RIGHT" />
          </children>
-      </AnchorPane>
+      </HBox>
    </top>
    <center>
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <VBox spacing="6.0">
+         <padding>
+            <Insets bottom="20.0" left="44.0" right="44.0" top="34.0" />
+         </padding>
          <children>
-            <Text layoutX="259.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Menu - Əməliyyatı seçin " textAlignment="CENTER" wrappingWidth="527.591796875">
-               <font>
-                  <Font size="40.0" />
-               </font>
-            </Text>
-            <Button fx:id="goodsReceiptButton" layoutX="148.0" layoutY="97.0" mnemonicParsing="false" onAction="#goodsReceiptButtonOnAction" prefHeight="100.0" prefWidth="300.0" text="Mal qəbulu">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="analysisButton" layoutX="586.0" layoutY="97.0" mnemonicParsing="false" onAction="#analysisButtonOnAction" prefHeight="100.0" prefWidth="300.0" text="Analiz  (Labarotoriya)">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="dryingButton" layoutX="148.0" layoutY="247.0" mnemonicParsing="false" onAction="#dryingButtonOnAction" prefHeight="100.0" prefWidth="300.0" text="Qurutma">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="kernelWarehouseButton" layoutX="586.0" layoutY="247.0" mnemonicParsing="false" onAction="#kernelWarehouseButtonOnAction" prefHeight="100.0" prefWidth="300.0" text="Ləpə Anbarı">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="reportButton" layoutX="148.0" layoutY="384.0" mnemonicParsing="false" onAction="#reportButtonOnAction" prefHeight="100.0" prefWidth="300.0" text="Hesabat">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
-            <Button fx:id="settingsButton" layoutX="586.0" layoutY="384.0" mnemonicParsing="false" onAction="#settingsButtonOnAction" prefHeight="100.0" prefWidth="300.0" text="Ayarlar">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Button>
+            <Label fx:id="welcomeLabel" styleClass="page-title" />
+            <Label styleClass="page-subtitle" text="Əməliyyatı seçin" />
+            <FlowPane fx:id="grid" hgap="24.0" prefWrapLength="920.0" vgap="24.0">
+               <VBox.margin>
+                  <Insets top="26.0" />
+               </VBox.margin>
+            </FlowPane>
          </children>
-      </AnchorPane>
+      </VBox>
    </center>
 </BorderPane>

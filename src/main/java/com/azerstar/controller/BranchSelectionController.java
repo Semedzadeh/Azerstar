@@ -1,71 +1,40 @@
 package com.azerstar.controller;
 
+import com.azerstar.screen.Menus;
+import com.azerstar.util.Cards;
+import com.azerstar.util.Choice;
+import com.azerstar.util.ProfileMenu;
+import com.azerstar.util.Reminders;
+import com.azerstar.util.Session;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
+import javafx.scene.layout.FlowPane;
 
-import java.io.IOException;
-
+/** Girişdən sonra: yalnız istifadəçiyə icazə verilən filiallar göstərilir. */
 public class BranchSelectionController {
-    @FXML
-    private Button backButton;
 
+    private static final String[] TONES = {"hazel", "green", "slate", "plum"};
+
+    @FXML
+    private FlowPane grid;
+
+    @FXML
+    public void initialize() {
+        int i = 0;
+        for (Choice branch : Session.getAllowedBranches()) {
+            grid.getChildren().add(Cards.menuCard("building", TONES[i++ % TONES.length], branch.label(),
+                    branch.label() + " filialının məlumatları", true, () -> choose(branch.id())));
+        }
+    }
+
+    private void choose(int branchId) {
+        Session.chooseBranch(branchId);
+        Menus.main();
+        Reminders.start();
+    }
+
+    /** Geri: giriş ekranına, sessiya bağlanır. */
     public void backButtonOnAction(ActionEvent event) {
-        try {
-            // Geri qayıdacağım FXML faylı
-            Parent branchSelectionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/entrance.fxml"));
-
-            // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) backButton.getScene().getWindow();
-
-            // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(branchSelectionScene));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    private Button zaqatalaButton;
-
-    public void zaqatalaButtonOnAction(ActionEvent event) {
-        try {
-            // Logine getmek ucun FXML faylı
-            Parent loginSelectionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/login.fxml"));
-
-            // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) zaqatalaButton.getScene().getWindow();
-
-            // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(loginSelectionScene));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-    @FXML
-    private Button shekiButton;
-
-    public void shekiButtonOnAction(ActionEvent event) {
-        try {
-            // Logine getmek ucun FXML faylı
-            Parent loginSelectionScene = FXMLLoader.load(getClass().getResource("/com/azerstar/view/login.fxml"));
-
-            // Hal-hazırkı stage-i tap
-            Stage stage = (Stage) shekiButton.getScene().getWindow();
-
-            // Yeni scene təyin et və göstər
-            stage.setScene(new Scene(loginSelectionScene));
-            stage.show();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        ProfileMenu.logout();
     }
 }

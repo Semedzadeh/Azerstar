@@ -1,0 +1,5 @@
+db.host=localhost
+db.port=3307
+db.name=azerstar
+db.user=azerstar
+db.password=BURA_PAROL

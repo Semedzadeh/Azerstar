@@ -1,62 +1,78 @@
-
 package com.azerstar.util;
 
-import javafx.scene.control.*;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.geometry.Insets;
+import javafx.geometry.Side;
+import javafx.scene.Node;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.CustomMenuItem;
+import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
+import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
-import java.io.IOException;
 import java.util.Optional;
 
+/** İstifadəçi kartına basanda açılan menyu: kim daxil olub, hansı filiallar, filialı dəyiş, çıxış. */
 public class ProfileMenu {
 
     private static ContextMenu contextMenu;
 
-    public static void attachProfileMenu(ImageView profileImageView, String currentUsername, Stage primaryStage) {
-        profileImageView.setOnMouseClicked(event -> showMenu(event, profileImageView, currentUsername, primaryStage));
+    public static void attachProfileMenu(Node anchor, String currentUsername, Stage primaryStage) {
+        anchor.setOnMouseClicked(event -> showMenu(anchor, currentUsername));
     }
 
-
-    private static void showMenu(MouseEvent event, ImageView profileImageView, String currentUsername, Stage stage) {
+    private static void showMenu(Node anchor, String currentUsername) {
         if (contextMenu != null && contextMenu.isShowing()) {
             contextMenu.hide();
             return;
         }
 
-        if (contextMenu == null) {
-            contextMenu = new ContextMenu();
+        // hər dəfə yenidən qurulur ki, başqa istifadəçi girəndə köhnə ad qalmasın
+        contextMenu = new ContextMenu();
+        contextMenu.getStyleClass().add("profile-menu");
 
-            MenuItem userItem = new MenuItem("İstifadəçi adı: " + currentUsername);
-            userItem.setDisable(true);
-            MenuItem branchItem = new MenuItem("Filial: Şəki");
-            branchItem.setDisable(true);
+        Label name = new Label(currentUsername);
+        name.getStyleClass().add("profile-menu-name");
+        Label details = new Label("Filial: " + Session.accessLabel() + (Session.isAdmin() ? "  ·  Admin" : ""));
+        details.getStyleClass().add("profile-menu-detail");
+        VBox info = new VBox(2, name, details);
+        info.setPadding(new Insets(6, 12, 6, 12));
+        CustomMenuItem header = new CustomMenuItem(info, false);
+        contextMenu.getItems().addAll(header, new SeparatorMenuItem());
 
-            MenuItem logoutItem = new MenuItem("🚪 Çıxış et");
-            logoutItem.setOnAction(e -> handleLogout(stage));
-
-            contextMenu.getItems().addAll(userItem,branchItem, new SeparatorMenuItem(), logoutItem);
+        if (Session.hasManyBranches()) {
+            MenuItem switchItem = new MenuItem("Filialı dəyiş");
+            switchItem.setOnAction(e -> Nav.goFxml("/com/azerstar/view/branchSelection.fxml"));
+            contextMenu.getItems().add(switchItem);
         }
 
-        contextMenu.show(profileImageView, event.getScreenX(), event.getScreenY());
+        MenuItem logoutItem = new MenuItem("Çıxış et");
+        logoutItem.getStyleClass().add("logout-item");
+        logoutItem.setOnAction(e -> handleLogout());
+        contextMenu.getItems().add(logoutItem);
+
+        contextMenu.show(anchor, Side.BOTTOM, 0, 8);
     }
 
-    private static void handleLogout(Stage stage) {
+    private static void handleLogout() {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Çıxış");
         alert.setHeaderText("Sistemdən çıxmaq istəyirsiniz?");
+        alert.initOwner(Nav.stage());
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            try {
-                Parent root = FXMLLoader.load(ProfileMenu.class.getResource("/com/azerstar/view/login.fxml"));
-                stage.setScene(new Scene(root));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+            logout();
         }
+    }
+
+    /** Sessiyanı bağlayıb giriş ekranına qayıdır. */
+    public static void logout() {
+        Reminders.stop();
+        Session.clearSession();
+        Nav.goFxml("/com/azerstar/view/login.fxml");
     }
 }
