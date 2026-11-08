@@ -24,17 +24,22 @@ public class MainMenuController {
         welcomeLabel.setText("Xoş gəlmisiniz, " + Session.getCurrentUsername());
         userBox.getChildren().add(Ui.userChip());
 
-        // icazəsi olmayan bölmənin kartı solğun və bağlı olur
-        grid.getChildren().addAll(
-                Cards.menuCard("receipt", "hazel", "Mal qəbulu", "Pərakəndə və topdan qəbul", Session.can(Section.RECEIPT), Menus::receipt),
-                Cards.menuCard("flask", "green", "Analiz", "Laboratoriya nəticələri", Session.can(Section.ANALYSIS), Menus::analysis),
-                Cards.menuCard("drop", "amber", "Qurutma", "Çənlər və açıq qurutma", Session.can(Section.DRYING), Menus::drying),
-                Cards.menuCard("warehouse", "slate", "Anbar", "Fındıq, qırma, ləpə, transfer", Session.can(Section.WAREHOUSE), Menus::warehouse),
-                Cards.menuCard("bars", "plum", "Hesabat", "Hesabatlar və izlənmə", Session.can(Section.REPORT), Menus::report));
+        // icazəsi olmayan bölmə heç göstərilmir
+        addCard(Section.RECEIPT, "receipt", "hazel", "Mal qəbulu", "Pərakəndə və topdan qəbul", Menus::receipt);
+        addCard(Section.ANALYSIS, "flask", "green", "Analiz", "Laboratoriya nəticələri", Menus::analysis);
+        addCard(Section.DRYING, "drop", "amber", "Qurutma", "Çənlər və açıq qurutma", Menus::drying);
+        addCard(Section.WAREHOUSE, "warehouse", "slate", "Anbar", "Fındıq, qırma, ləpə, transfer", Menus::warehouse);
+        addCard(Section.REPORT, "bars", "plum", "Hesabat", "Hesabatlar və izlənmə", Menus::report);
 
         // filialın öz ayarları yalnız adminlərə göstərilir, sadə istifadəçi onu heç görmür
         if (Session.isAnyAdmin()) {
             grid.getChildren().add(Cards.menuCard("sliders", "teal", "Filial ayarları", "İstifadəçilər və çənlər", true, Menus::branches));
+        }
+    }
+
+    private void addCard(Section section, String icon, String color, String title, String subtitle, Runnable action) {
+        if (Session.can(section)) {
+            grid.getChildren().add(Cards.menuCard(icon, color, title, subtitle, true, action));
         }
     }
 }
