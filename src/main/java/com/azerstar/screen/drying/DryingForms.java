@@ -20,7 +20,7 @@ final class DryingForms {
     private static final String AVAILABLE_SQL =
             "SELECT * FROM (SELECT r.receipt_id, r.customer_name, r.date_time, "
                     + "r.weight_kg - COALESCE((SELECT SUM(s.weight_kg) FROM drying_source s WHERE s.receipt_id = r.receipt_id), 0) AS available_kg "
-                    + "FROM receipt r WHERE r.branch_id = ?) x WHERE x.available_kg > 0.0001 ORDER BY x.date_time DESC";
+                    + "FROM receipt r WHERE r.branch_id = ? AND EXISTS (SELECT 1 FROM analysis a WHERE a.receipt_id = r.receipt_id)) x WHERE x.available_kg > 0.0001 ORDER BY x.date_time DESC";
 
     private DryingForms() {
     }
@@ -33,7 +33,7 @@ final class DryingForms {
 
     private static double availableOf(int receiptId) {
         Row r = Db.queryOne("SELECT r.weight_kg - COALESCE((SELECT SUM(s.weight_kg) FROM drying_source s WHERE s.receipt_id = r.receipt_id), 0) AS available_kg "
-                + "FROM receipt r WHERE r.receipt_id = ?", receiptId);
+                + "FROM receipt r WHERE r.receipt_id = ? AND EXISTS (SELECT 1 FROM analysis a WHERE a.receipt_id = r.receipt_id)", receiptId);
         return r == null ? 0 : r.number("available_kg");
     }
 
@@ -41,7 +41,7 @@ final class DryingForms {
     static int start(Integer tankId, String tankName, int branchId) {
         List<Row> available = Db.query(AVAILABLE_SQL, branchId);
         if (available.isEmpty()) {
-            Ui.warn("Qurutmaya verilə biləcək mal yoxdur. Əvvəlcə mal qəbulu əlavə edin (və ya qalıq bitib).");
+            Ui.warn("Qurutmaya verilə biləcək mal yoxdur. Mal qəbulu analizdən keçməyibsə, əvvəlcə analiz edin (və ya qalıq bitib).");
             return 0;
         }
         boolean tank = tankId != null;
