@@ -25,7 +25,9 @@ public class MainMenuController {
         userBox.getChildren().add(Ui.userChip());
 
         // icazəsi olmayan bölmə heç göstərilmir
-        addCard(Section.RECEIPT, "receipt", "hazel", "Mal qəbulu", "Pərakəndə və topdan qəbul", Menus::receipt);
+        if (Session.can(Section.RECEIPT_RETAIL) || Session.can(Section.RECEIPT_WHOLESALE)) {
+            grid.getChildren().add(Cards.menuCard("receipt", "hazel", "Mal qəbulu", "Pərakəndə və topdan qəbul", true, Menus::receipt));
+        }
         addCard(Section.ANALYSIS, "flask", "green", "Analiz", "Laboratoriya nəticələri", Menus::analysis);
         addCard(Section.DRYING, "drop", "amber", "Qurutma", "Çənlər və açıq qurutma", Menus::drying);
         addCard(Section.WAREHOUSE, "warehouse", "slate", "Anbar", "Fındıq, qırma, ləpə, transfer", Menus::warehouse);

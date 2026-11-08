@@ -48,11 +48,8 @@ public class UsersScreen extends ListScreen {
 
         Map<Integer, List<String>> perms = new HashMap<>();
         for (Row p : Db.query("SELECT account_id, section FROM user_permission")) {
-            try {
-                String title = Section.valueOf(p.str("section")).title();
-                perms.computeIfAbsent(p.integer("account_id"), k -> new ArrayList<>()).add(title);
-            } catch (IllegalArgumentException ignored) {
-                // naməlum bölmə adı varsa keç
+            for (Section section : Section.parse(p.str("section"))) {
+                perms.computeIfAbsent(p.integer("account_id"), k -> new ArrayList<>()).add(section.title());
             }
         }
         Map<Integer, List<String>> branches = new HashMap<>();
@@ -118,7 +115,7 @@ public class UsersScreen extends ListScreen {
             username.setText(existing.str("username"));
             Set<String> have = new HashSet<>();
             for (Row p : Db.query("SELECT section FROM user_permission WHERE account_id = ?", existing.integer("account_id"))) {
-                have.add(p.str("section"));
+                for (Section section : Section.parse(p.str("section"))) have.add(section.name());
             }
             boxes.forEach((s, b) -> b.setSelected(have.contains(s.name())));
             for (Row b : Db.query("SELECT branch_id FROM user_branch WHERE account_id = ?", existing.integer("account_id"))) {

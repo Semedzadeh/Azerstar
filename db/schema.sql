@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS user_account (
 
 -- Rollar: SUPER_ADMIN (hər şey, filiallar, adminlər, baza bağlantısı), BRANCH_ADMIN (öz filiallarının istifadəçiləri və çənləri),
 -- USER (yalnız icazə verilən bölmələr).
--- Sadə istifadəçinin bölmə icazələri: RECEIPT, ANALYSIS, DRYING, WAREHOUSE, REPORT. Adminlər üçün sətir lazım deyil.
+-- Sadə istifadəçinin bölmə icazələri: RECEIPT_RETAIL, RECEIPT_WHOLESALE, ANALYSIS, DRYING, WAREHOUSE, REPORT. Adminlər üçün sətir lazım deyil.
 CREATE TABLE IF NOT EXISTS user_permission (
     account_id INT NOT NULL,
     section    VARCHAR(30) NOT NULL,

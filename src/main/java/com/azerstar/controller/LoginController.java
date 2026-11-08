@@ -55,11 +55,7 @@ public class LoginController {
 
             Set<Section> allowed = EnumSet.noneOf(Section.class);
             for (Row p : Db.query("SELECT section FROM user_permission WHERE account_id = ?", accountId)) {
-                try {
-                    allowed.add(Section.valueOf(p.str("section")));
-                } catch (IllegalArgumentException ignored) {
-                    // naməlum bölmə adı varsa keç
-                }
+                allowed.addAll(Section.parse(p.str("section")));
             }
             if (role == Role.USER && allowed.isEmpty()) {
                 loginMessageLabel.setText("Bu istifadəçiyə heç bir bölmə üçün icazə verilməyib.");

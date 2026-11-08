@@ -48,7 +48,7 @@ Screen flow (changed 2026-11-06, login comes first): `entrance` → `login` → 
 MySQL database `azerstar`, schema in `db/schema.sql`. Tables:
 
 - `branch(branch_id, name)` — 1 Şəki, 2 Zaqatala.
-- `user_account(account_id, firstname, lastname, username, password, branch_id, role SUPER_ADMIN|BRANCH_ADMIN|USER)` — `branch_id` is the home branch (where new records go by default); `user_permission(account_id, section)` with sections RECEIPT, ANALYSIS, DRYING, WAREHOUSE, REPORT (only for role USER; admins have no rows; the old SETTINGS section was removed); `user_branch(account_id, branch_id)` — branches the user may see (SUPER_ADMIN always sees all branches).
+- `user_account(account_id, firstname, lastname, username, password, branch_id, role SUPER_ADMIN|BRANCH_ADMIN|USER)` — `branch_id` is the home branch (where new records go by default); `user_permission(account_id, section)` with sections RECEIPT_RETAIL, RECEIPT_WHOLESALE (the old single RECEIPT is still read as both), ANALYSIS, DRYING, WAREHOUSE, REPORT (only for role USER; admins have no rows; the old SETTINGS section was removed); `user_branch(account_id, branch_id)` — branches the user may see (SUPER_ADMIN always sees all branches).
 - `receipt(receipt_id, branch_id, receipt_type RETAIL|WHOLESALE, date_time, customer_name, weight_kg, unit_price, total_amount, note, created_by)` — one table, two screens.
 - `analysis(analysis_id, receipt_id, branch_id, date_time, sample_weight_g, kernel_weight_g, mindal_g, rotten_g, kernel_moisture, note, created_by)`.
 - `tank(tank_id, branch_id, name, capacity_kg, active)`.

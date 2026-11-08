@@ -19,7 +19,10 @@ import com.azerstar.screen.warehouse.ShellingScreen;
 import com.azerstar.util.Db;
 import com.azerstar.util.Nav;
 import com.azerstar.util.Row;
+import com.azerstar.util.Section;
 import com.azerstar.util.Session;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /** Bütün menyu və ekranlara keçidlər bir yerdə. */
@@ -33,9 +36,14 @@ public final class Menus {
     }
 
     public static void receipt() {
-        new MenuScreen("Mal qəbulu", "Fabrikə gələn fındığın qəbulu. Növü seçin.", Menus::main,
-                new Tile("Pərakəndə qəbul", "Fərdi müştərilərdən gələn mal", "receipt", "hazel", () -> new ReceiptScreen("RETAIL").show()),
-                new Tile("Topdan qəbul", "Fermer və şirkətlərdən böyük partiyalar", "package", "slate", () -> new ReceiptScreen("WHOLESALE").show())).show();
+        List<Tile> tiles = new ArrayList<>();
+        if (Session.can(Section.RECEIPT_RETAIL)) {
+            tiles.add(new Tile("Pərakəndə qəbul", "Fərdi müştərilərdən gələn mal", "receipt", "hazel", () -> new ReceiptScreen("RETAIL").show()));
+        }
+        if (Session.can(Section.RECEIPT_WHOLESALE)) {
+            tiles.add(new Tile("Topdan qəbul", "Fermer və şirkətlərdən böyük partiyalar", "package", "slate", () -> new ReceiptScreen("WHOLESALE").show()));
+        }
+        new MenuScreen("Mal qəbulu", "Fabrikə gələn fındığın qəbulu. Növü seçin.", Menus::main, tiles.toArray(new Tile[0])).show();
     }
 
     public static void analysis() {
